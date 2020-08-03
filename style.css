@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
+body {
+    font-family: 'Vollkorn', serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.container div {
+    position: relative;
+    background-color: #5b5e6d;
+    width: 40px;
+    height: 2px;
+    margin: 6px 0;
+    right: 20px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+    background-color: #A6373F;
+}
+header .logo {
+    position: relative;
+    font-size: 3em;
+    margin-left: 15px;
+}
+
+.nav ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nav ul li {
+    position: relative;
+    list-style: none;
+    margin: 0 15px;
+    font-size: 2em;
+   
+} 
+
+.nav {
+    display: none;
+} 
+
+.banner {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    background:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(images/9c027d9379cb61aefa9c1d0957268ba2.jpg);
+    background-size: cover;
+}
+.hello-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+
+
+@media screen and (min-width: 600px) {
+    .container div {
+        display: none;
+    }
+    .nav {
+        display: block;
+    } 
+}
+
+
+
+@media (min-width: 960px) {
+
+}
