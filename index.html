@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" rel="stylesheet" />
     <title>Game time!</title>
-</head>
-<body>
-    <header>
-        <div class="logo">
-            dodo
-        </div>
-        <div class="container">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="nav">
-            <ul>
+  </head>
+  <body>
+    <div class="parent-section">
+        <header>
+            <div class="logo">
+              dodo
+            </div>
+            <div class="container">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="nav">
+              <ul>
                 <li>You are home</li>
                 <li>Contact</li>
-            </ul>
+              </ul>
+            </div>
+          </header>
+          <div class="banner"></div>
+          <section class="hello-section">
+            <h2>Hello, dear stranger!</h2>
+            <h3>what is your name?</h3>
+            <input type="text" name="stranger-name" id="stranger-name" />
+            <button class="name-btn btn" value="Submit">That's my name</button>
+          </section>
+    </div>
+
+    <section class="quiz hide">
+    <div class="banner-quiz"></div>  
+      <div id="question-container">
+        <div id="question">Question</div>
+        <div id="answer-buttons" class="btn-grid">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
         </div>
-       
-    </header>
-    <div class="banner"> </div>
-    <section class="hello-section">
-        <h2>Hello, dear stranger!</h2>
-        <h3>what is your name?</h3>
-        <input type="text" name="stranger-name" id="stranger-name">
-        <button class='name-btn btn' value="Submit">That's my name</button>
+      </div>
     </section>
-    
-
-
-
 
     <script src="jasmine/jasmine-standalone-3.6.0/src/script.js"></script>
-</body>
+    <script src="jasmine/jasmine-standalone-3.6.0/src/questions.js"></script>
+  </body>
 </html>
