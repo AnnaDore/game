@@ -121,6 +121,9 @@ header .logo {
     display: none;
 }
 
+.active {
+    background-color: red;
+}
 @media screen and (min-width: 600px) {
     .container div {
         display: none;

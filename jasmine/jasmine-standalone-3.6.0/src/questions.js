@@ -7,7 +7,7 @@ const questionsList = [
             3: 'Whatsup',
             4: 'FB messanger'
         },
-        correct: '1'
+        correct: 'Hermes'
     }, 
     {
         question: "What sport is featured in the video game “FIFA”?",
@@ -17,7 +17,7 @@ const questionsList = [
             3: 'Football',
             4: 'Carting'
         },
-        correct: '3'
+        correct: 'Football'
     }, 
     {
         question: "What does Au stand for in the periodic table?",
@@ -27,7 +27,7 @@ const questionsList = [
             3: 'Gold',
             4: 'Aluminium'
         },
-        correct: '3'
+        correct: 'Gold'
     }, 
     {
         question: "What is the capital city of Iceland?",
@@ -37,6 +37,6 @@ const questionsList = [
             3: 'Amsterdam',
             4: 'Rekyavik'
         },
-        correct: '4'
+        correct: 'Rekyavik'
     },
 ]  
