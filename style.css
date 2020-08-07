@@ -168,8 +168,19 @@ header .logo {
     bottom: 60px;
 }
 
+.banner-finish-game {
+    position: relative; 
+    /*     text-align: center; */
+        width: 100%;
+        height: 100vh;
+        background:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(images/congrats.jpg);
+        background-size: cover;
+}
 
-    
+
+footer {
+    background-color: blue;
+}
 
 
 @media screen and (min-width: 600px) {
