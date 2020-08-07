@@ -55,10 +55,11 @@ startBtn.addEventListener('click', function() {
 //working with the new elements in the quiz page
 let bannerSectionQuiz = document.createElement('div')
 let bannerParent = document.getElementsByClassName('parent-section')[0]
+let bodyParent = document.querySelector('body')
 
 //after click of the start button -  generate the 1st section of the game
 function addQuizSection() {
-  let bodyParent = document.querySelector('body')
+ // let bodyParent = document.querySelector('body')
   //create a background image
 /*   bannerSectionQuiz.classList.add('banner-quiz')
   bannerParent.appendChild(bannerSectionQuiz); */
@@ -152,6 +153,9 @@ let scoreHolder = document.getElementById('score')
 let congrats = document.getElementById('congratulation');
 let parentOfQuizSection = document.getElementById('all-buttons')
 let parentOFAnswerButtons = document.getElementById('answer-buttons')
+//the next button to load the new section
+
+
 
 
 //add content to the quiz section on the webpage
@@ -164,6 +168,13 @@ function showData() {
   answerOTwoHolder.innerHTML = questionObject.answerTwo;
   answerThreeHolder.innerHTML = questionObject.answerThree;
   answerFourHolder.innerHTML = questionObject.answerFour;
+  //make the buttons clickable
+  answerOneHolder.disabled = false;
+  answerOTwoHolder.disabled = false;
+  answerThreeHolder.disabled = false;
+  answerFourHolder.disabled = false;
+  nextBtn.disabled = true;
+
 }
 
 //try to check the answer after click
@@ -177,13 +188,19 @@ btn.forEach(element => {
       questionObject.correctAnswer()
       scoreHolder.innerHTML = questionObject.score
       congrats.innerHTML = questionObject.message;
-      
+
     } else {
       alert('incorrect')
       //show correct answer
       congrats.innerHTML = questionObject.message;
+      
     }
     //work with the next button
+    answerOneHolder.disabled = true;
+    answerOTwoHolder.disabled = true;
+    answerThreeHolder.disabled = true;
+    answerFourHolder.disabled = true;
+    nextBtn.disabled = false
     nextBtn.classList.toggle('active')
   })
 })
@@ -201,10 +218,62 @@ function clearQuizPart() {
   btn.forEach(item => {
     parentOFAnswerButtons.removeChild(item);
   })
- // parentOFAnswerButtons.removeChild(btn);
   parentOfQuizSection.removeChild(nextBtn);
   questionObject.message = `ok, ${inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`
+  congrats.innerHTML = questionObject.message;
+  showNextBtnAfterQuiz()
+
 }
+let startSecondGame = document.createElement('button')
+
+function showNextBtnAfterQuiz() {
+ 
+  startSecondGame.innerHTML = 'Hey, what is next?'
+  parentOfQuizSection.appendChild(startSecondGame)
+}
+
+//second game
+
+let gameSection = document.getElementsByClassName('second-game')[0]
+//after click of the start button -  generate the 1st section of the game
+startSecondGame.addEventListener('click', gameHolers)
+
+
+function gameHolers() {
+  gameSection.classList.toggle('hide')
+
+
+
+  //showData()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* class Question {
