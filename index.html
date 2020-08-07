@@ -88,29 +88,32 @@
       </div>
     </section>
     <section class="second-game hide">
-      <div class="banner-second-game"></div>
+      <div class="banner-second-game">
+        <button
+        class="catch"
+      >
+        Catch me
+      </button>
+      </div>
 
       <div>
         <div id="second-game-content">
-          <div class="score-wrapper">
+          <div class="score-wrapper-second-game">
             <div>YOUR SCORE IS:</div>
-            <div id="score"></div>
-            <div id="congratulation"></div>
+            <div id="score-second-game"></div>
+            <div id="congratulation-second-game"></div>
           </div>
-          <div class="content">
+          <div class="content-second-game">
+            <div class="info">
+              <p>so... Next challenge is - try to catch the button!</p>
+            </div>
+          </div>
 
-          </div>
-          <button
-          type="submit"
-          id="submitbutton"
-          onclick="document.getElementById('submitbutton').disabled = true;"
-          class="btn next"
-        >
-          start
-        </button>
         </div>
       </div>
-    </section>
+
+
+    </section> 
     <script src="jasmine/jasmine-standalone-3.6.0/src/questions.js"></script>
     <script src="jasmine/jasmine-standalone-3.6.0/src/script.js"></script>
   </body>

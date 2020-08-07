@@ -225,27 +225,63 @@ function clearQuizPart() {
 
 }
 let startSecondGame = document.createElement('button')
+let parentSecondGame  = document.getElementById('question-container')
 
 function showNextBtnAfterQuiz() {
  
   startSecondGame.innerHTML = 'Hey, what is next?'
-  parentOfQuizSection.appendChild(startSecondGame)
+  parentSecondGame.appendChild(startSecondGame)
 }
 
 //second game
-
 let gameSection = document.getElementsByClassName('second-game')[0]
+
 //after click of the start button -  generate the 1st section of the game
-startSecondGame.addEventListener('click', gameHolers)
+startSecondGame.addEventListener('click', gameHolders)
+//content
+let secondScore = document.getElementsByClassName('score-wrapper-second-game')[0]
+let catchBtn = document.getElementsByClassName('catch')[0]
+let info = document.getElementsByClassName('info')[0]
 
 
-function gameHolers() {
+
+function gameHolders() {
   gameSection.classList.toggle('hide')
-
-
-
-  //showData()
+  secondScore.innerHTML = ''
 }
+catchBtn.addEventListener('click', function() {
+  catchBtn.classList.add('first')
+  catchBtn.addEventListener('click', function() {
+    catchBtn.classList.remove('first')
+    catchBtn.classList.add('second')
+    catchBtn.addEventListener('click', function() {
+      catchBtn.classList.remove('second')
+      catchBtn.classList.add('third')
+      catchBtn.addEventListener('click', function() {
+        info.innerHTML = "It was a small joke 😀 Here are 10 points for you!"
+        questionObject.score += 10
+        secondScore.innerHTML += questionObject.score
+      })
+    })
+  })
+})
+//click on the catch button - it appers in the random places
+
+
+
+/* function randomApperCatchBtn () {
+  switch('click'){
+    case 1:
+    catchBtn.classList.add('first')
+    console.log('1')
+    break;
+    case 2:
+      catchBtn.classList.add('second')
+      break;
+  }
+
+}
+ */
 
 
 
