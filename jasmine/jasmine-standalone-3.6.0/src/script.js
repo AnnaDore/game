@@ -12,6 +12,8 @@ let firstSection = document.getElementsByClassName('first-section')[0]
 //nav elements
 let contact = document.getElementById('contact')
 
+
+
 //check that a user put the name
 function strangerNameLength() {
    return inputName.value.length;
@@ -44,7 +46,6 @@ function addPAndStartButton() {
   startLink.setAttribute('href', '#quiz-scroll')
   startLink.innerHTML = 'LET\'S GO!!'  */
   //uncomment if you use button
-  console.log(startBtn)
  return startBtn
 }
 //if a user submitted the input by Enter
@@ -85,10 +86,7 @@ function hideFirstSection() {
   firstSection.classList.toggle('hide')
 }
 function scrollToFooter() {
- 
   contact.setAttribute('href', '#footer-scroll')
-  console.log('contact')
-  console.log(contact)
 }
 contact.addEventListener('click', scrollToFooter)
 
@@ -141,8 +139,6 @@ class Quiz {
   }
   nextQuestion() {
     this.index += 1;
-    console.log(this.index)
-    console.log(this.questions.length)
     this.provideQuestion();
   }
     /* add an event after clicking as a par-r of the method */
@@ -289,12 +285,34 @@ function gameHolders() {
   gameSection.classList.toggle('hide')
   secondScore.innerHTML = ''
   hideQuizSection();
+
 }
 let lastPart = document.getElementsByClassName('animation')[0]
 let congratsContent = document.createElement('div')
 congratsContent.setAttribute('class', 'animation-text')
-congratsContent.innerHTML = `Yey! ${inputName.value}, your score is ${questionObject.score}. Congratulations and thank you very much for you time!`
+congratsContent.innerHTML = `Yey!  your score is ${questionObject.score}. Congratulations and thank you very much for you time!`
 lastPart.appendChild(congratsContent)
+//home button
+let homeButton = document.getElementById('game-status')
+
+
+
+
+/* gameSection.classList.contains('hide')  &&
+ quizSection.classList.contains('hide') && 
+ firstSection.classList.contains('hide') */
+
+function trackHomeButton() {
+  if (congratsContent.classList.contains('animation-text')) {
+    homeButton.innerHTML = 'Start game again';
+    homeButton.setAttribute('href', '#start-game-again');
+
+     homeButton.addEventListener('click', function() {
+      firstSection.classList.toggle('hide')
+      lastPart.classList.toggle('hide')
+      }) 
+    }
+  }
 
 catchBtn.addEventListener('click', function() {
   catchBtn.classList.add('first')
@@ -313,9 +331,17 @@ catchBtn.addEventListener('click', function() {
         catchBtn.addEventListener('click', function() {
           animationSection.classList.toggle('hide')
           gameSection.classList.toggle('hide')
+          trackHomeButton();
         })
       })
     })
   })
 })
 
+   /*      //quizSection.classList.toggle('hide')
+        addQuizSection()
+        questionObject.score === 0
+        questionObject.provideQuestion();
+        showData() */
+
+      //  homeButton.setAttribute('href', '#start-game-again');
