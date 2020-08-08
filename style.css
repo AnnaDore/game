@@ -447,7 +447,6 @@ footer {
     font-size: 2em;
 }
 
-
 .first{
     position: relative; 
     left: 20%;
@@ -476,7 +475,55 @@ footer {
     text-align: center;
 }
 
+.layered-image {
+    position: relative;
 
+}
+
+
+img {
+    position: absolute;
+   /*  display: inline; */
+     bottom: 30px;
+    left: 30px;  
+    opacity: 0.8;
+/*     z-index: 1000; */
+    animation-duration: 25s;
+    animation: myslidein 10s, myrotate 1.75s;
+   animation-iteration-count: infinite; 
+ }
+
+
+@keyframes myslidein {
+   
+    0% {
+        bottom: 0;
+        left: 0%; 
+    }
+    25% {
+        bottom: 50%;
+        left: 25%; 
+    }
+
+    50% {
+        bottom: 65%;
+        left: 50%; 
+    }
+    75%{
+        bottom: 50%;
+        left: 75%; 
+    }
+   
+    100% {
+        bottom: 3%;
+        left: 100%; 
+       
+     
+    }
+/*     100%{
+        display: none;
+    } */
+  }
 
 
 @media screen and (min-width: 600px) {
