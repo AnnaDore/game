@@ -235,10 +235,16 @@ header .logo {
     top: 30%;
     left: 50%; 
     transform: translate(-50%, -50%);
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
 }
-
+#all-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 
@@ -252,7 +258,7 @@ header .logo {
 } 
 
 .banner-second-game {
-    position: relative; 
+     position: relative;  
     /*     text-align: center; */
         width: 100%;
         height: 100vh;
@@ -270,11 +276,7 @@ header .logo {
 /* .second-game {
     position: absolute; 
 } */
-.catch {
-    position: relative;
-    top: 50%;
-    left: 50%; 
-}
+
 .first{
     position: relative; 
     left: 20%;
@@ -292,7 +294,7 @@ header .logo {
 }
 
 .banner-finish-game {
-    position: relative; 
+     position: relative; 
     /*     text-align: center; */
         width: 100%;
         height: 100vh;
@@ -306,13 +308,13 @@ footer {
     
 }
 
-.hide {
+ .hide {
     display: none;
 }
 
 .active {
     background-color: #36CD18;
-}
+} 
 /* below - hidden elements */
 #score {
     font-size: 1.5em;
@@ -337,10 +339,40 @@ footer {
    cursor: pointer;
     
 }
+
+#congratulation {
+    position: relative;
+    margin-bottom: 20px;;
+    font-size: 1.3em;
+}
+
 .next {
     width: 100px;
     padding: 10px;
 }
+#start-second-game {
+    width: 200px;
+    padding: 20px 0;
+    font-size: 1.2em;
+    margin-top: 30px;
+    cursor: pointer;
+}
+/* 3rd section  */
+.catch {
+    position: relative;
+    top: 50%;
+    left: 40%; 
+    width: 300px;
+    padding: 20px 0;
+    font-size: large;
+    cursor: pointer;
+}
+#second-game-content {
+/*     position: relative; */
+    top: 40%; 
+    left: 50%;
+}
+ 
 
 @media screen and (min-width: 600px) {
     .container div {

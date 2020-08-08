@@ -156,8 +156,11 @@ class Quiz {
           this.message = `Correct answer again, ${inputName.value}! What is next?`
           break;
         case 3:
-          this.message = `${inputName.value}, you are unstoppable!`
+          this.message = `Yey, ${inputName.value}, correct!`
           break;
+          case 3:
+            this.message = `${inputName.value} you got maximum points!`
+            break;
       }
     }
 }
@@ -209,14 +212,16 @@ btn.forEach(element => {
      // alert("correct")
       questionObject.correctAnswer()
       scoreHolder.innerHTML = questionObject.score
-      questionHolder.innerHTML = ''
+      questionHolder.innerHTML = questionObject.question
       congrats.innerHTML = questionObject.message;
-
+      nextBtn.disabled = false
     } else {
      // alert('incorrect')
       //show correct answer
       questionHolder.innerHTML = questionObject.question
       congrats.innerHTML = `sorry, but a correct answer is ${questionObject.correctness}`
+      nextBtn.disabled = false
+      
     }
     //work with the next button
     answerOneHolder.disabled = true;
@@ -224,7 +229,7 @@ btn.forEach(element => {
     answerThreeHolder.disabled = true;
     answerFourHolder.disabled = true;
     nextBtn.disabled = false
-    nextBtn.classList.toggle('active')
+     /* nextBtn.classList.toggle('active') */
   })
 })
 
@@ -238,7 +243,7 @@ nextBtn.addEventListener('click', function() {
   //questionObject.provideQuestion();
   questionObject.message = ''
   showData();
-  
+
 })
 
 function clearQuizPart() {
@@ -247,7 +252,7 @@ function clearQuizPart() {
     parentOFAnswerButtons.removeChild(item);
   })
   parentOfQuizSection.removeChild(nextBtn);
-  questionObject.message = `ok, ${inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`
+  questionObject.message = `${inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`
   congrats.innerHTML = questionObject.message;
   showNextBtnAfterQuiz()
 
@@ -264,6 +269,7 @@ function showNextBtnAfterQuiz() {
   
   startSecondGame.innerHTML = 'Hey, what is next?'
   startSecondGame.setAttribute('href', '#second-game-section')
+  startSecondGame.setAttribute('id', 'start-second-game')
   parentSecondGame.appendChild(startSecondGame)
 }
 
