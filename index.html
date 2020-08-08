@@ -19,8 +19,8 @@
         </div>
         <div class="nav">
           <ul>
-            <li>You are home</li>
-            <li>Contact</li>
+            <a id=game-status>You are in game</a>
+            <a id='contact'>Contact</a>
           </ul>
         </div>
       </header>
@@ -29,7 +29,7 @@
       <section class="hello-section">
         <h2>Hello, dear stranger!</h2>
         <h3>what is your name?</h3>
-        <input type="text" name="stranger-name" id="stranger-name" />
+        <input type="text" name="stranger-name" id="stranger-name" placeholder="Your name"/>
         <button class="name-btn btn" value="Submit">That's my name</button>
       </section>
     </div>
@@ -121,7 +121,7 @@
     <section class="animation hide">
       <div class="banner-finish-game"></div>
     </section>
-    <footer>
+    <footer id='footer-scroll'>
       <div class="wrapper">
         <div>
           <p>Made by Dodo</p>

@@ -9,6 +9,8 @@ let startBtn = document.createElement('button')
 let startLink = document.createElement('a')
 //to hide the 1st section
 let firstSection = document.getElementsByClassName('first-section')[0]
+//nav elements
+let contact = document.getElementById('contact')
 
 //check that a user put the name
 function strangerNameLength() {
@@ -17,20 +19,33 @@ function strangerNameLength() {
 //what to show if the name was added
 function addPAndStartButton() {
   let p = document.createElement('p')
-  p.appendChild(document.createTextNode(`${inputName.value}! I have a nice game for you! If you wanna play - click the Start button!`))
+  //try to se several lines
+  let textMultiLines = `Hey ${inputName.value}!` + 
+  ' have a nice game for you!' + 
+  'If you wanna play - click the Start button!';
+    p.appendChild(document.createTextNode(textMultiLines))
+ // p.appendChild(document.createTextNode(`Hey ${inputName.value}! I have a nice game for you! If you wanna play - click the Start button!`))
   parentGreetingElement.appendChild(p)
   //button or link
   //button
-/*  parentGreetingElement.appendChild(startBtn)
+ parentGreetingElement.appendChild(startBtn)
   startBtn.classList.add('start-btn')
-  startBtn.innerHTML = 'LET\'S GO!!'  */
+  startBtn.setAttribute('href', '#quiz-scroll')
+  //changes below
+  let spanButtonStart = document.createElement('span')
+  startBtn.appendChild(spanButtonStart)
+    //changes above
+
+
+    startBtn.innerHTML = 'start'  
   //link
-  parentGreetingElement.appendChild(startLink)
+/*   parentGreetingElement.appendChild(startLink)
   startLink.classList.add('start-btn')
   startLink.setAttribute('href', '#quiz-scroll')
-  startLink.innerHTML = 'LET\'S GO!!' 
+  startLink.innerHTML = 'LET\'S GO!!'  */
   //uncomment if you use button
- //return startBtn
+  console.log(startBtn)
+ return startBtn
 }
 //if a user submitted the input by Enter
 function greetAfterKeypress(event) {
@@ -57,18 +72,25 @@ greetingButton.addEventListener('click', greetAfterClick)
 //add listener for the start button
 //link or button
 //button
-/* startBtn.addEventListener('click', function() {
+startBtn.addEventListener('click', function() {
+  addQuizSection();
+})  
+//link
+/* startLink.addEventListener('click', function() {
   addQuizSection();
 })  */
-//link
-startLink.addEventListener('click', function() {
-  addQuizSection();
-}) 
 
 //hide 1st section
 function hideFirstSection() {
   firstSection.classList.toggle('hide')
 }
+function scrollToFooter() {
+ 
+  contact.setAttribute('href', '#footer-scroll')
+  console.log('contact')
+  console.log(contact)
+}
+contact.addEventListener('click', scrollToFooter)
 
 //working with the new elements in the quiz page
 let bannerSectionQuiz = document.createElement('div')
@@ -115,6 +137,7 @@ class Quiz {
       this.answerFour = this.questions[this.index].answers[4];
       this.correctness = this.questions[this.index].correct;
     }
+    
   }
   nextQuestion() {
     this.index += 1;
@@ -127,10 +150,10 @@ class Quiz {
       this.score += 1;
       switch (this.score) {
         case 1: 
-        this.message = `Cool! you increased your score, now it is ${this.score}`
+        this.message = `Correct! you increased your score, now it is ${this.score}`
         break;
         case 2:
-          this.message = `Wow, ${inputName.value}! What is next?`
+          this.message = `Correct answer again, ${inputName.value}! What is next?`
           break;
         case 3:
           this.message = `${inputName.value}, you are unstoppable!`
@@ -164,6 +187,7 @@ function showData() {
   questionObject.provideQuestion()
   //show the question
   questionHolder.innerHTML = questionObject.question
+  congrats.innerHTML = ''
   //show the answer option
   answerOneHolder.innerHTML = questionObject.answerOne;
   answerOTwoHolder.innerHTML = questionObject.answerTwo;
@@ -175,20 +199,24 @@ function showData() {
   answerThreeHolder.disabled = false;
   answerFourHolder.disabled = false;
   nextBtn.disabled = true;
+  scoreHolder.innerHTML = questionObject.score
 
 }
 
 btn.forEach(element => {
   element.addEventListener('click', function() {
     if (element.innerHTML === questionObject.correctness) {
-      alert("correct")
+     // alert("correct")
       questionObject.correctAnswer()
       scoreHolder.innerHTML = questionObject.score
+      questionHolder.innerHTML = ''
       congrats.innerHTML = questionObject.message;
+
     } else {
-      alert('incorrect')
+     // alert('incorrect')
       //show correct answer
-      congrats.innerHTML = questionObject.message;
+      questionHolder.innerHTML = questionObject.question
+      congrats.innerHTML = `sorry, but a correct answer is ${questionObject.correctness}`
     }
     //work with the next button
     answerOneHolder.disabled = true;
@@ -226,9 +254,10 @@ function clearQuizPart() {
 }
 //link or button
 //button
-//let startSecondGame = document.createElement('button')
+let startSecondGame = document.createElement('button')
 //link
-let startSecondGame = document.createElement('a')
+//let startSecondGame = document.createElement('a')
+
 let parentSecondGame  = document.getElementById('question-container')
 
 function showNextBtnAfterQuiz() {
@@ -271,7 +300,7 @@ catchBtn.addEventListener('click', function() {
         catchBtn.innerHTML = 'Let\'s check the results!'
         catchBtn.addEventListener('click', function() {
           animationSection.classList.toggle('hide')
-
+          gameSection.classList.toggle('hide')
         })
       })
     })

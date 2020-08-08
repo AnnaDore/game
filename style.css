@@ -1,3 +1,6 @@
+/* the main part
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 
 html {
@@ -12,6 +15,8 @@ body {
     font-size: 16px;
 
 }
+
+/* parent element of the page, greeting part */
 
 .container div {
     position: relative;
@@ -44,10 +49,13 @@ header .logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* change pointer */
+    cursor: pointer;
 }
 
 
-.nav ul li {
+
+.nav ul a {
     position: relative;
     list-style: none;
     margin: 0 15px;
@@ -58,6 +66,14 @@ header .logo {
 .nav {
     display: none;
 } 
+
+/* greeting part started */
+
+
+
+
+
+
 
 .banner {
     position: relative;
@@ -72,12 +88,13 @@ header .logo {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
 }
 
-.stranger-name {
 
-}
 
 
 .hello-section p {
@@ -85,19 +102,118 @@ header .logo {
     font-size: 1.5em;
 }
 
-/* make the start button beautiful!!  */
+
+#stranger-name {
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    width: 150px;
+    margin-bottom: 5px;
+    text-align: center;
+   
+}
+
+.name-btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 156px;
+    cursor: pointer;
+}
+
+.first-section p {
+    background-color: #F4D0F9;
+}
+
+
+.btn {
+    cursor: pointer;
+}
+
+/* <button class="start-btn" href="#quiz-scroll">START</button>
+//in video <a href='#>Button</a>
+ *//* make the start button beautiful!!  */
 .start-btn {
     position: relative;
     align-items: center;
     width: 160px;
     height: 60px;
-    background: pink;
+    background: #F4D0F9;
     transition: 0.5s;
     z-index: 1;
+    cursor: pointer;
+   /*  pretty button */
+   text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 4px;
+    -webkit-box-reflect: below 1px linear-gradient (transparent, #0004);
+
+    
 }
-.start-btn:hover {
-    color:red;
+
+/* if you have time - finish pretty button https://www.youtube.com/watch?v=NWFsAMnpDXw&list=WL&index=15&t=0s */
+/* .start-btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(45deg,#fb0094, #00f, #EEE65E, #5EEE72, #E612EF  ); 
+   background-size: 400%;
+    opacity: 0;
+  transition: 0.5s;
+
+
+} 
+
+.start-btn::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,#fb0094, #00f, #EEE65E, #5EEE72, #E612EF  ); 
+   background-size: 400%;
+   opacity: 0;
+   filter: blur(20px);
+   transition: 0.5s;
+   
+   
+
+} 
+
+
+.start-btn:hover span {
+   color: white;
+   
+    
+   
+   
 }
+.start-btn span::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #F4E7F4; 
+   
+}
+.start-btn span {
+    position: absolute;
+    display: block;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    text-align: center;
+    background: black;
+    color: grey;
+    transition: 0.5s;
+    z-index: 1;
+} */
+
 
 /* quiz section */
 .banner-quiz {
@@ -115,26 +231,26 @@ header .logo {
     align-items: center;
 }
  #question-container {
-     position: absolute;
-    top: 90%;
+    position: absolute;
+    top: 30%;
     left: 50%; 
     transform: translate(-50%, -50%);
 
     
 }
+
+
+
+
+
+/* second game */
 .second-game {
 
     position: relative;
     display: flex;
     align-items: center;
 } 
-.hide {
-    display: none;
-}
 
-.active {
-    background-color: red;
-}
 .banner-second-game {
     position: relative; 
     /*     text-align: center; */
@@ -143,6 +259,7 @@ header .logo {
         background:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(images/section2.jpg);
         background-size: cover;
 }
+
 
 #second-game-content {
     position: absolute;
@@ -189,6 +306,41 @@ footer {
     
 }
 
+.hide {
+    display: none;
+}
+
+.active {
+    background-color: #36CD18;
+}
+/* below - hidden elements */
+#score {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+}
+
+#question {
+    font-size: 2em;
+    margin-bottom: 40px;
+} 
+#answer-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+   
+}
+.btn-answer {
+   width: 100px;
+   margin-right: 10px;
+   font-size: 1.1em;
+   cursor: pointer;
+    
+}
+.next {
+    width: 100px;
+    padding: 10px;
+}
 
 @media screen and (min-width: 600px) {
     .container div {
