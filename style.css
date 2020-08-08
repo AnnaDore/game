@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Vollkorn', serif;
     margin: 0;
     padding: 0;
     font-size: 16px;
+
 }
 
 .container div {

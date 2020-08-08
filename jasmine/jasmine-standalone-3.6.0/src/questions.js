@@ -9,7 +9,7 @@ const questionsList = [
         },
         correct: 'Hermes'
     }, 
-/*     {
+/*    {
         question: "What sport is featured in the video game “FIFA”?",
         answers: {
             1: 'Tennis',
@@ -38,5 +38,5 @@ const questionsList = [
             4: 'Rekyavik'
         },
         correct: 'Rekyavik'
-    }, */
+    },   */
 ]  

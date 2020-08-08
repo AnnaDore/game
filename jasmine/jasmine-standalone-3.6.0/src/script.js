@@ -4,7 +4,11 @@
 let greetingButton = document.getElementsByClassName('name-btn')[0]
 let inputName = document.getElementById('stranger-name');
 let parentGreetingElement = document.getElementsByClassName('hello-section')[0]
+//choose between the button and the link
 let startBtn = document.createElement('button')
+let startLink = document.createElement('a')
+//to hide the 1st section
+let firstSection = document.getElementsByClassName('first-section')[0]
 
 //check that a user put the name
 function strangerNameLength() {
@@ -15,12 +19,18 @@ function addPAndStartButton() {
   let p = document.createElement('p')
   p.appendChild(document.createTextNode(`${inputName.value}! I have a nice game for you! If you wanna play - click the Start button!`))
   parentGreetingElement.appendChild(p)
-  //let startBtn = document.createElement('button')
-  parentGreetingElement.appendChild(startBtn)
+  //button or link
+  //button
+/*  parentGreetingElement.appendChild(startBtn)
   startBtn.classList.add('start-btn')
-  startBtn.innerHTML = 'LET\'S GO!!'
-  return startBtn
-
+  startBtn.innerHTML = 'LET\'S GO!!'  */
+  //link
+  parentGreetingElement.appendChild(startLink)
+  startLink.classList.add('start-btn')
+  startLink.setAttribute('href', '#quiz-scroll')
+  startLink.innerHTML = 'LET\'S GO!!' 
+  //uncomment if you use button
+ //return startBtn
 }
 //if a user submitted the input by Enter
 function greetAfterKeypress(event) {
@@ -36,7 +46,6 @@ function greetAfterClick() {
   if (strangerNameLength() > 0) {
     addPAndStartButton();
    // let letgoButton = document.getElementsByClassName('start-btn')[0]
-    
   } else {
     alert('please, put your name');
   }
@@ -46,11 +55,20 @@ inputName.addEventListener('keypress', greetAfterKeypress)
 greetingButton.addEventListener('click', greetAfterClick)
 
 //add listener for the start button
-startBtn.addEventListener('click', function() {
+//link or button
+//button
+/* startBtn.addEventListener('click', function() {
+  addQuizSection();
+})  */
+//link
+startLink.addEventListener('click', function() {
   addQuizSection();
 }) 
 
-
+//hide 1st section
+function hideFirstSection() {
+  firstSection.classList.toggle('hide')
+}
 
 //working with the new elements in the quiz page
 let bannerSectionQuiz = document.createElement('div')
@@ -60,9 +78,11 @@ let bodyParent = document.querySelector('body')
 //after click of the start button -  generate the 1st section of the game
 function addQuizSection() {
   quizHolers();
+  hideFirstSection();
+
 }
 
-//generate the questions and answers holders
+//generate the questions and answers holders and banner
 let quizSection = document.getElementsByClassName('quiz')[0]
 
 function quizHolers() {
@@ -94,9 +114,7 @@ class Quiz {
       this.answerThree = this.questions[this.index].answers[3];
       this.answerFour = this.questions[this.index].answers[4];
       this.correctness = this.questions[this.index].correct;
-
     }
-
   }
   nextQuestion() {
     this.index += 1;
@@ -108,7 +126,6 @@ class Quiz {
     correctAnswer() {
       this.score += 1;
       switch (this.score) {
-
         case 1: 
         this.message = `Cool! you increased your score, now it is ${this.score}`
         break;
@@ -119,9 +136,7 @@ class Quiz {
           this.message = `${inputName.value}, you are unstoppable!`
           break;
       }
-      
     }
-
 }
 
 const questionObject = new Quiz(questionsList, questionsList.question, questionsList.answers, questionsList.correct)
@@ -163,9 +178,6 @@ function showData() {
 
 }
 
-
-
-
 btn.forEach(element => {
   element.addEventListener('click', function() {
     if (element.innerHTML === questionObject.correctness) {
@@ -173,12 +185,10 @@ btn.forEach(element => {
       questionObject.correctAnswer()
       scoreHolder.innerHTML = questionObject.score
       congrats.innerHTML = questionObject.message;
-
     } else {
       alert('incorrect')
       //show correct answer
       congrats.innerHTML = questionObject.message;
-      
     }
     //work with the next button
     answerOneHolder.disabled = true;
@@ -190,12 +200,17 @@ btn.forEach(element => {
   })
 })
 
+function hideQuizSection() {
+  quizSection.classList.toggle('hide')
+}
+
 nextBtn.addEventListener('click', function() {
  /*  questionObject.correctAnswer(); */
   questionObject.nextQuestion();
   //questionObject.provideQuestion();
   questionObject.message = ''
   showData();
+  
 })
 
 function clearQuizPart() {
@@ -209,12 +224,17 @@ function clearQuizPart() {
   showNextBtnAfterQuiz()
 
 }
-let startSecondGame = document.createElement('button')
+//link or button
+//button
+//let startSecondGame = document.createElement('button')
+//link
+let startSecondGame = document.createElement('a')
 let parentSecondGame  = document.getElementById('question-container')
 
 function showNextBtnAfterQuiz() {
- 
+  
   startSecondGame.innerHTML = 'Hey, what is next?'
+  startSecondGame.setAttribute('href', '#second-game-section')
   parentSecondGame.appendChild(startSecondGame)
 }
 
@@ -230,11 +250,10 @@ let info = document.getElementsByClassName('info')[0]
 let animationSection = document.getElementsByClassName('animation')[0]
 
 
-
-
 function gameHolders() {
   gameSection.classList.toggle('hide')
   secondScore.innerHTML = ''
+  hideQuizSection();
 }
 
 catchBtn.addEventListener('click', function() {
