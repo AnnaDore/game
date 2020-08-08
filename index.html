@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>Game time!</title>
   </head>
   <body>
@@ -19,24 +21,28 @@
         </div>
         <div class="nav">
           <ul>
-            <a id=game-status>You are in game</a>
-            <a id='contact'>Contact</a>
+            <a id="game-status">You are in game</a>
+            <a id="contact">Contact</a>
           </ul>
         </div>
       </header>
       <div class="first-section">
-       <div class="banner"></div>
-      <section class="hello-section">
-        <h2>Hello, dear stranger!</h2>
-        <h3>what is your name?</h3>
-        <input type="text" name="stranger-name" id="stranger-name" placeholder="Your name"/>
-        <button class="name-btn btn" value="Submit">That's my name</button>
-      </section>
+        <div class="banner"></div>
+        <section class="hello-section">
+          <h2>Hello, dear stranger!</h2>
+          <h3>what is your name?</h3>
+          <input
+            type="text"
+            name="stranger-name"
+            id="stranger-name"
+            placeholder="Your name"
+          />
+          <button class="name-btn btn" value="Submit">That's my name</button>
+        </section>
+      </div>
     </div>
 
-    </div>
-
-    <section id='quiz-scroll' class="quiz hide">
+    <section id="quiz-scroll" class="quiz hide">
       <div class="banner-quiz"></div>
 
       <div>
@@ -44,7 +50,6 @@
           <div class="score-wrapper">
             <div>YOUR SCORE IS:</div>
             <div id="score"></div>
-           
           </div>
           <div id="all-buttons">
             <div id="question">Question</div>
@@ -91,48 +96,45 @@
         </div>
       </div>
     </section>
-    <section id='second-game-section' class="second-game hide">
-      <div class="banner-second-game"> 
+    <section id="second-game-section" class="second-game hide">
+      <div class="banner-second-game">
+        <button class="catch">
+          Catch me
+        </button>
+      </div>
 
-  
-        <button
-        class="catch"
-      >
-        Catch me
-      </button>
-    </div>
-     
-
-        <div id="second-game-content">
-          <div class="content-second-game">
-            <div class="info">
-              <p>so... Next challenge is - try to catch the button!</p>
-            </div>
+      <div id="second-game-content">
+        <div class="content-second-game">
+          <div class="info">
+            <p>so... Next challenge is - try to catch the button!</p>
           </div>
-          <div class="score-wrapper-second-game">
-            <div></div>
-            <div id="score-second-game"></div>
-            <div id="congratulation-second-game"></div>
-          </div>
-
-
         </div>
-    
+        <div class="score-wrapper-second-game">
+          <div></div>
+          <div id="score-second-game"></div>
+          <div id="congratulation-second-game"></div>
+        </div>
+      </div>
+    </section>
 
-
-    </section> 
-    
     <section class="animation hide">
       <div class="banner-finish-game"></div>
     </section>
-    <footer id='footer-scroll'>
+    <footer id="footer-scroll">
       <div class="wrapper">
         <div>
           <p>Made by Dodo</p>
         </div>
         <div class="icons">
-          <i>Linkenid</i>
-          <i>Github</i>
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/in/anna-dorenskaia-155b7b129/?locale=en_US"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/AnnaDore"><i class="fa fa-github"></i></a>
+            </li>
+          </ul>
+
         </div>
       </div>
     </footer>

@@ -290,6 +290,11 @@ function gameHolders() {
   secondScore.innerHTML = ''
   hideQuizSection();
 }
+let lastPart = document.getElementsByClassName('animation')[0]
+let congratsContent = document.createElement('div')
+congratsContent.setAttribute('class', 'animation-text')
+congratsContent.innerHTML = `Yey! ${inputName.value}, your score is ${questionObject.score}. Congratulations and thank you very much for you time!`
+lastPart.appendChild(congratsContent)
 
 catchBtn.addEventListener('click', function() {
   catchBtn.classList.add('first')
@@ -303,6 +308,7 @@ catchBtn.addEventListener('click', function() {
         info.innerHTML = "It was a small joke 😀 Here are 10 points for you!"
         questionObject.score += 10
         secondScore.innerHTML = `YOUR SCORE IS: ${questionObject.score}`
+        catchBtn.classList.toggle('third')
         catchBtn.innerHTML = 'Let\'s check the results!'
         catchBtn.addEventListener('click', function() {
           animationSection.classList.toggle('hide')
@@ -312,7 +318,4 @@ catchBtn.addEventListener('click', function() {
     })
   })
 })
-
-
-
 
