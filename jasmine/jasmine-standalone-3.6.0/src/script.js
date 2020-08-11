@@ -23,29 +23,19 @@ function addPAndStartButton() {
   let p = document.createElement('p')
   //try to se several lines
   let textMultiLines = `Hey ${inputName.value}!` + 
-  ' have a nice game for you!' + 
+  ' I have a nice game for you!' + 
   'If you wanna play - click the Start button!';
     p.appendChild(document.createTextNode(textMultiLines))
- // p.appendChild(document.createTextNode(`Hey ${inputName.value}! I have a nice game for you! If you wanna play - click the Start button!`))
   parentGreetingElement.appendChild(p)
-  //button or link
-  //button
+
  parentGreetingElement.appendChild(startBtn)
   startBtn.classList.add('start-btn')
   startBtn.setAttribute('href', '#quiz-scroll')
-  //changes below
+
   let spanButtonStart = document.createElement('span')
   startBtn.appendChild(spanButtonStart)
-    //changes above
-
-
     startBtn.innerHTML = 'start'  
-  //link
-/*   parentGreetingElement.appendChild(startLink)
-  startLink.classList.add('start-btn')
-  startLink.setAttribute('href', '#quiz-scroll')
-  startLink.innerHTML = 'LET\'S GO!!'  */
-  //uncomment if you use button
+
  return startBtn
 }
 //if a user submitted the input by Enter
@@ -71,15 +61,10 @@ inputName.addEventListener('keypress', greetAfterKeypress)
 greetingButton.addEventListener('click', greetAfterClick)
 
 //add listener for the start button
-//link or button
-//button
 startBtn.addEventListener('click', function() {
   addQuizSection();
 })  
-//link
-/* startLink.addEventListener('click', function() {
-  addQuizSection();
-})  */
+
 
 //hide 1st section
 function hideFirstSection() {
@@ -176,7 +161,6 @@ let scoreHolder = document.getElementById('score')
 let congrats = document.getElementById('congratulation');
 let parentOfQuizSection = document.getElementById('all-buttons')
 let parentOFAnswerButtons = document.getElementById('answer-buttons')
-//the next button to load the new section
 
 
 
