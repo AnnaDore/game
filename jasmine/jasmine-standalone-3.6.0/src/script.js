@@ -287,13 +287,6 @@ function gameHolders() {
   hideQuizSection();
 
 }
-let lastPart = document.getElementsByClassName('animation')[0]
-let congratsContent = document.createElement('div')
-congratsContent.setAttribute('class', 'animation-text')
-congratsContent.innerHTML = `Yey!  your score is ${questionObject.score}. Congratulations and thank you very much for you time!`
-lastPart.appendChild(congratsContent)
-//home button
-let homeButton = document.getElementById('game-status')
 
 
 
@@ -304,15 +297,19 @@ let homeButton = document.getElementById('game-status')
 
 function trackHomeButton() {
   if (congratsContent.classList.contains('animation-text')) {
-    homeButton.innerHTML = 'Start game again';
-    homeButton.setAttribute('href', '#start-game-again');
+   // homeButton.innerHTML = 'Start game again';
+  //  homeButton.setAttribute('href', '#start-game-again');
 
      homeButton.addEventListener('click', function() {
       firstSection.classList.toggle('hide')
       lastPart.classList.toggle('hide')
+
+
       }) 
     }
   }
+
+
 
 catchBtn.addEventListener('click', function() {
   catchBtn.classList.add('first')
@@ -332,11 +329,27 @@ catchBtn.addEventListener('click', function() {
           animationSection.classList.toggle('hide')
           gameSection.classList.toggle('hide')
           trackHomeButton();
+                //new
+
+
+          return questionObject.score
         })
       })
     })
   })
 })
+
+let lastPart = document.getElementsByClassName('animation')[0]
+let congratsContent = document.createElement('div')
+congratsContent.setAttribute('class', 'animation-text')
+congratsContent.innerHTML = `Yey ${inputName.value}! Congratulations and thank you very much for you time!`
+lastPart.appendChild(congratsContent)
+//home button
+let homeButton = document.getElementById('game-status')
+
+
+
+
 
    /*      //quizSection.classList.toggle('hide')
         addQuizSection()
