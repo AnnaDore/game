@@ -19,7 +19,7 @@
         </div>
         <div class="nav">
           <ul>
-<!--             <a id="game-status">You are in game</a> -->
+            <a id="game-status">You are in game</a> 
             <a id="contact">Contact</a>
           </ul>
         </div>
@@ -39,91 +39,95 @@
         </section>
       </div>
     </div>
-
-    <section id="quiz-scroll" class="quiz hide">
-      <div class="banner-quiz"></div>
-
-      <div>
-        <div id="question-container">
-          <div class="score-wrapper">
-            <div>YOUR SCORE IS:</div>
-            <div id="score"></div>
-          </div>
-          <div id="all-buttons">
-            <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
+   <!--  wrapper to hide all -->
+    <div class="wrapper-for-new-game">
+      <section id="quiz-scroll" class="quiz hide">
+        <div class="banner-quiz"></div>
+  
+        <div>
+          <div id="question-container">
+            <div class="score-wrapper">
+              <div>YOUR SCORE IS:</div>
+              <div id="score"></div>
+            </div>
+            <div id="all-buttons">
+              <div id="question">Question</div>
+              <div id="answer-buttons" class="btn-grid">
+                <button
+                  type="submit"
+                  id="submitbutton"
+                  class="btn-answer answer-one"
+                >
+                  Answer 1
+                </button>
+                <button
+                  type="submit"
+                  id="submitbutton"
+                  class="btn-answer answer-two"
+                >
+                  Answer 2
+                </button>
+                <button
+                  type="submit"
+                  id="submitbutton"
+                  class="btn-answer answer-three"
+                >
+                  Answer 3
+                </button>
+                <button
+                  type="submit"
+                  id="submitbutton"
+                  class="btn-answer answer-four"
+                >
+                  Answer 4
+                </button>
+              </div>
+              <div id="congratulation"></div>
               <button
                 type="submit"
                 id="submitbutton"
-                class="btn-answer answer-one"
+                onclick="document.getElementById('submitbutton').disabled = true;"
+                class="btn next"
               >
-                Answer 1
-              </button>
-              <button
-                type="submit"
-                id="submitbutton"
-                class="btn-answer answer-two"
-              >
-                Answer 2
-              </button>
-              <button
-                type="submit"
-                id="submitbutton"
-                class="btn-answer answer-three"
-              >
-                Answer 3
-              </button>
-              <button
-                type="submit"
-                id="submitbutton"
-                class="btn-answer answer-four"
-              >
-                Answer 4
+                Next
               </button>
             </div>
-            <div id="congratulation"></div>
-            <button
-              type="submit"
-              id="submitbutton"
-              onclick="document.getElementById('submitbutton').disabled = true;"
-              class="btn next"
-            >
-              Next
-            </button>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="second-game-section" class="second-game hide">
-      <div class="banner-second-game">
-        <button class="catch">
-          Catch me
-        </button>
-      </div>
-
-      <div id="second-game-content">
-        <div class="content-second-game">
-          <div class="info">
-            <p>so... Next challenge is - try to catch the button!</p>
+      </section>
+      <section id="second-game-section" class="second-game hide">
+        <div class="banner-second-game">
+          <button class="catch">
+            Catch me
+          </button>
+        </div>
+  
+        <div id="second-game-content">
+          <div class="content-second-game">
+            <div class="info">
+              <p>so... Next challenge is - try to catch the button!</p>
+            </div>
+          </div>
+          <div class="score-wrapper-second-game">
+            <div></div>
+            <div id="score-second-game"></div>
+            <div id="congratulation-second-game"></div>
           </div>
         </div>
-        <div class="score-wrapper-second-game">
-          <div></div>
-          <div id="score-second-game"></div>
-          <div id="congratulation-second-game"></div>
+      </section>
+  
+      <section class="animation hide">
+        <div class="layered-image">
+          <div class="banner-finish-game"> </div>
+          <div id="congrats-content">Placeholder</div>
+          <img src="images/sun2.png" alt="sun">
         </div>
-      </div>
-    </section>
-
-    <section class="animation hide">
-      <div class="layered-image">
-        <div class="banner-finish-game"> </div>
-        <img src="images/sun2.png" alt="sun">
-      </div>
-
-
-
-    </section>
+  
+  
+  
+      </section>
+    </div>
+    
     <footer id="footer-scroll">
       <div class="wrapper">
         <div>
@@ -143,6 +147,6 @@
       </div>
     </footer>
     <script src="jasmine/jasmine-standalone-3.6.0/src/questions.js"></script>
-    <script src="jasmine/jasmine-standalone-3.6.0/src/script2.js"></script>
+    <script src="jasmine/jasmine-standalone-3.6.0/src/script3.js"></script>
   </body>
 </html>

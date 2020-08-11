@@ -94,6 +94,7 @@ class Quiz {
     this.answers = answers;
     this.correctness = correctness;
     this.score = 0;
+    this.finalScore = 0;
     this.usedQuestions = [];
     this.index = 0;
     this.message = "";
@@ -192,6 +193,7 @@ class Quiz {
     this.message = `${firstPageElements.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`
     this.congrats.innerHTML = this.message;
     thirdSection.showNextBtnAfterQuiz()
+    this.finalScore = 10 + this.score;
   
   }
   hideQuizSection() {
@@ -265,10 +267,11 @@ class ThirdSection {
         this.gameSection.classList.toggle('hide')
         this.secondScore.innerHTML = ''
         questionObject.hideQuizSection();
-      
+        console.log(questionObject.score)
       }
 }
 let thirdSection = new ThirdSection();
+
 
 thirdSection.catchBtn.addEventListener('click', function() {
     thirdSection.catchBtn.classList.add('first')
@@ -281,6 +284,7 @@ thirdSection.catchBtn.addEventListener('click', function() {
             thirdSection.catchBtn.addEventListener('click', function() {
                 thirdSection.info.innerHTML = "It was a small joke 😀 Here are 10 points for you!"
                 questionObject.score += 10
+                console.log(questionObject.score)
                 thirdSection.secondScore.innerHTML = `YOUR SCORE IS: ${questionObject.score}`
                 thirdSection.catchBtn.classList.toggle('third')
                 thirdSection.catchBtn.innerHTML = 'Let\'s check the results!'
@@ -288,35 +292,35 @@ thirdSection.catchBtn.addEventListener('click', function() {
                     thirdSection.animationSection.classList.toggle('hide')
                     thirdSection.gameSection.classList.toggle('hide')
                         //trackHomeButton();
-
-  
-            return questionObject.score
+                        fourthSectionObj.generateContent()            
           })
         })
       })
     })
   })
 
+  
+
 function thirdSectionListeners() {
     thirdSection.startSecondGame.addEventListener('click', thirdSection.gameHolders.bind(thirdSection))
 }
-//as an example
-//firstPageElements.startBtn.addEventListener("click", questionObject.addQuizSection.bind(questionObject));
+
 
 
 //4th section
 class FourthSection {
     constructor() {
         this.lastPart = document.getElementsByClassName('animation')[0]
-        this.congratsContent = document.createElement('div')
+        this.congratsContent = document.getElementById('congrats-content')
        
         //home button
         //this.homeButton = document.getElementById('game-status')
     }
     generateContent() {
-        this.congratsContent.setAttribute('class', 'animation-text')
-        this.congratsContent.innerHTML = `Yey ${firstPageElements.inputName.value}! Your score is ${questionObject.score} Congratulations and thank you very much for you time!`
-        this.lastPart.appendChild(this.congratsContent)
+       this.congratsContent.setAttribute('class', 'animation-text')
+       this.congratsContent.innerHTML = `Yey ${firstPageElements.inputName.value}! Your score is ${questionObject.finalScore}. Congratulations and thank you very much for you time!`
+       console.log(questionObject.score)
+        // this.lastPart.appendChild(this.congratsContent)
     }
 }
 
