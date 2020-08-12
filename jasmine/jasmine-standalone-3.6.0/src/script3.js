@@ -53,15 +53,9 @@ class FirstSectionElements {
       }
       //hide 1st section
       hideFirstSection() {
-        this.inputName.value = '';
-      //  this.p.removeChild(this.textMultiLines);
-        //this.textMultiLines.innerHTML= ''
-        this.parentGreetingElement.p = ''
-        this.parentGreetingElement.startBtn = ''
-       // this.parentGreetingElement.removeChild(this.p);
-       // this.parentGreetingElement.removeChild(this.startBtn)
-        
         this.firstSection.classList.toggle("hide");
+/*         this.greetingButton.remove()
+        this.inputName.remove() */
       }
       scrollToFooter() {
         this.contact.setAttribute("href", "#footer-scroll");
@@ -79,25 +73,32 @@ class FirstSectionElements {
     firstPageElements.startBtn.addEventListener("click", questionObject.addQuizSection.bind(questionObject));
     firstPageElements.contact.addEventListener("click", firstPageElements.scrollToFooter.bind(firstPageElements));
     firstPageElements.homeBtn.addEventListener('click', function() {
-        if (firstPageElements.firstSection.classList.contains('hide')) {
-/*             firstPageElements.firstSection.classList.toggle('hide')
-            questionObject.quizSection.classList.toggle('hide')
-            thirdSection.gameSection.classList.toggle('hide') */
-            firstPageElements.hideAllForNewGame.classList.toggle('hide')
-            firstPageElements.firstSection.classList.toggle('hide')
-            //clean all
-            questionObject.score = 0;
+      if (!thirdSection.animationSection.classList.contains('hide')) {
+       // firstPageElements.startBtn.addEventListener("click", questionObject.addQuizSection.bind(questionObject));
+       thirdSection.animationSection.classList.toggle('hide')
+       questionObject.quizSection.classList.toggle("hide");
+       questionObject.addQuizSection.bind(questionObject);
+       
+      // questionObject.quizHolers()
+       
+/*        addListenersFirstSection();
 
-            addListenersFirstSection();
-            addListenersSecondSection();
-            thirdSectionListeners();
-            fourthSectionObj.generateContent()
-            console.log('home')
-        }
-    })
+        addListenersSecondSection();
+        thirdSectionListeners();
+        fourthSectionObj.generateContent() */
+  /*       firstPageElements.firstSection.classList.toggle("hide");
+        firstPageElements.hideAllForNewGame.classList.toggle('hide'); */
+        /*      
+  
+        firstPageElements.startBtn.addEventListener("click", questionObject.quizHolers.bind(questionObject));
+        console.log('start again') */
+        
+  
+      }
+  })
   }
   
-  
+
   
   class Quiz {
     constructor(questions, question, answers, correctness) {
@@ -132,14 +133,18 @@ class FirstSectionElements {
       this.parentSecondGame = document.getElementById("question-container");
     }
   
-    quizHolers() {
-      this.quizSection.classList.toggle("hide");
-      this.showData();
-    }
+
     addQuizSection() {
       //refer not to this!!!!!! how to fix it?
       this.quizHolers();
       firstPageElements.hideFirstSection();
+      console.log('addQuizSection')
+    }
+    quizHolers() {
+      this.quizSection.classList.toggle("hide");
+      this.showData();
+      console.log('quizHolers')
+      console.log(this.quizSection)
     }
     provideQuestion() {
       if (this.index === this.questions.length) {
@@ -195,19 +200,45 @@ class FirstSectionElements {
       this.scoreHolder.innerHTML = this.score;
     }
     clearQuizPart() {
-      this.parentOfQuizSection.removeChild(this.questionHolder);
+            //fix remove button
+/*             this.questionHolder.remove()
+            this.nextBtn.remove()
+            this.btn.forEach(item => {
+              item.remove();
+            })  */
+
+   //   this.showData();
+  //    thirdSection.startSecondGame.remove()
+      //end of the fix
+      this.questionHolder.remove()
+     
+      this.nextBtn.remove()
       this.btn.forEach(item => {
+        item.remove();
+      }) 
+     // this.parentOfQuizSection.removeChild(this.questionHolder);
+/*        this.btn.forEach(item => {
         this.parentOFAnswerButtons.removeChild(item);
-      })
-      this.parentOfQuizSection.removeChild(this.nextBtn);
+      }) */ 
+     // this.parentOfQuizSection.removeChild(this.nextBtn); 
       this.message = `${firstPageElements.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`
       this.congrats.innerHTML = this.message;
-      thirdSection.showNextBtnAfterQuiz()
       this.finalScore = 10 + this.score;
+      thirdSection.showNextBtnAfterQuiz()
+     
     
     }
     hideQuizSection() {
+      
+  
       this.quizSection.classList.toggle('hide')
+    }
+    generateNewGame() {
+      questionObject.score = 0;
+      this.index = 0;
+      this.showData();
+
+
     }
   }
   
@@ -299,6 +330,7 @@ class FirstSectionElements {
                   thirdSection.catchBtn.addEventListener('click', function() {
                       thirdSection.animationSection.classList.toggle('hide')
                       thirdSection.gameSection.classList.toggle('hide')
+                      firstPageElements.homeBtn.innerHTML = 'Start game again';
                           //trackHomeButton();
                           fourthSectionObj.generateContent()            
             })
@@ -323,7 +355,7 @@ class FirstSectionElements {
       generateContent() {
          this.congratsContent.setAttribute('class', 'animation-text')
          this.congratsContent.innerHTML = `Yey ${firstPageElements.inputName.value}! Your score is ${questionObject.finalScore}. Congratulations and thank you very much for you time!`
-          // this.lastPart.appendChild(this.congratsContent)
+         
       }
   }
   
