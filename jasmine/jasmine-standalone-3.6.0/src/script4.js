@@ -97,13 +97,12 @@ function addEventListenersFirstSection() {
     firstSectionObj.removeANdHideFirstSection.bind(firstSectionObj)
   );
   firstSectionObj.startBtn.addEventListener(
-    "click",
-    secondSectionObject.generateSecondSectionPageContent.bind(
-      secondSectionObject
-    )
+    "click", secondSectionObject.generateAndAddListenetrsTest.bind(secondSectionObject)
+    
   );
 }
 
+//quiz section
 class SecondSection {
   constructor(questions, question, answers, correctness) {
     this.questions = questions;
@@ -126,14 +125,29 @@ class SecondSection {
     this.scoreText = document.createElement('div');
     this.scoreElement = document.createElement('div');
     //elements for the question, answers, button
-    
+   
     this.questionHolder = document.createElement('div');
+    this.allButtons = document.createElement('div');
     this.allAnswerButton = document.createElement('div')
     this.answerOneHolder = document.createElement('button');
     this.answerTwoHolder = document.createElement('button');
     this.answerThreeHolder = document.createElement('button');
     this.answerFourHolder = document.createElement('button');
-
+    
+   // this.btn = [this.answerOneHolder, this.answerTwoHolder, this.answerThreeHolder, this.answerFourHolder];
+    this.congrats = document.createElement('div');
+    //answer buttons 
+    this.answerOneHolder = document.createElement('button');
+    this.answerTwoHolder = document.createElement('button');
+    this.answerThreeHolder = document.createElement('button');
+    this.answerFourHolder = document.createElement('button');
+    //next quiz button
+    this.nextBtn = document.createElement('button');
+    this.nextBtn.disabled = true;
+    //add next game opening button
+    this.startSecondGameBtn = document.createElement('button');
+    //for the text
+    this.message = ''
 
   }
   setAttributesElements() {
@@ -145,46 +159,235 @@ class SecondSection {
     this.scoreElement.innerHTML  = this.score; 
     //elements for the question, answers, button
     this.questionHolder.setAttribute('id', 'question');
+    this.allButtons.setAttribute('id', 'all-button')
     this.allAnswerButton.setAttribute('id', 'answer-buttons');
-
-
-
+    this.congrats.setAttribute('id', 'congratulation');
+    //answer buttons
+    this.answerOneHolder.setAttribute('class', 'btn-answer');
+    this.answerTwoHolder.setAttribute('class', 'btn-answer');
+    this.answerThreeHolder.setAttribute('class', 'btn-answer');
+    this.answerFourHolder.setAttribute('class', 'btn-answer');
+   // this.btn = [...document.getElementsByClassName('btn-answer')];
+    //next quiz button
+    this.nextBtn.setAttribute('class', 'btn next');
+    this.nextBtn.innerHTML = 'NEXT'
+        //add a button to open the next game
+    this.startSecondGameBtn.setAttribute('href', '#second-game-section');
+    this.startSecondGameBtn.setAttribute('id', 'start-second-game');
+    this.startSecondGameBtn.innerHTML = "hey, what is next?"
+   
   }
   structureSecondSection() {
+    //add a new page
     this.parentSection.appendChild(this.secondSection);
     this.secondSection.appendChild(this.secondSectionBackground);
+    //add a content to the second section
     this.secondSection.appendChild(this.questionContainer);
+    //form the content section on the second page
+    //add score wrapper to the question container
     this.questionContainer.appendChild(this.scoreWrapper);
+    //add elements to the score wrapper
     this.scoreWrapper.appendChild(this.scoreText);
     this.scoreWrapper.appendChild(this.scoreElement);
-     //elements for the question, answers, button
-     this.allAnswerButton = [this.answerOneHolder, this.answerTwoHolder, this.answerThreeHolder, this.answerFourHolder]
-     this.questionContainer.appendChild(this.questionHolder);
-     this.questionContainer.appendChild(this.allAnswerButton);
-    // this.secondSection.appendChild(this.questionHolder);
-
-    
+    //add all buttons elemnt (which has a question, answers, congrats section and button next (later))
+    this.questionContainer.appendChild(this.allButtons)
+    this.allButtons.appendChild(this.questionHolder); 
+    this.allButtons.appendChild(this.allAnswerButton);
+    //add answer buttons separatelly
+    this.allAnswerButton.appendChild(this.answerOneHolder)
+    this.allAnswerButton.appendChild(this.answerTwoHolder)
+    this.allAnswerButton.appendChild(this.answerThreeHolder)
+    this.allAnswerButton.appendChild(this.answerFourHolder)
+    //congrats (text) section
+    this.allButtons.appendChild(this.congrats)
+    //next quiz btn
+    this.allButtons.appendChild(this.nextBtn);
 
   }
   generateSecondSectionPageContent() {
     firstSectionObj.removeANdHideFirstSection();
-    this.setAttributesElements();
     this.structureSecondSection();
-    console.log(this.secondSectionBackground);
-  }
-  showData() {
-    this.questionHolder.innerHTML = this.question;
+    this.setAttributesElements();
+    
+    this.provideQuestion();
+    this.showQuestionAndAnswers();
 
+  }
+  generateAndAddListenetrsTest() {
+    this.generateSecondSectionPageContent();
+    const myBtn = [...document.getElementsByClassName('btn-answer')];
+    myBtn.forEach(element => {
+      element.addEventListener('click', function() {
+        if (element.innerHTML === secondSectionObject.correctness) {
+       //   alert("correct")
+           secondSectionObject.correctAnswer()
+          secondSectionObject.scoreElement.innerHTML = secondSectionObject.score;
+          secondSectionObject.questionHolder.innerHTML = secondSectionObject.question;
+           secondSectionObject.congrats.innerHTML = 'Correct!!!';
+          secondSectionObject.nextBtn.disabled = false; 
+          
+         }
+         else {
+      //    alert('incorrect')
+          //show correct answer
+           secondSectionObject.questionHolder.innerHTML = secondSectionObject.question;
+          secondSectionObject.congrats.innerHTML = `sorry, but a correct answer is ${secondSectionObject.correctness}`;
+          secondSectionObject.nextBtn.disabled = false; 
+          
+        }
+         //work with the next button
+       secondSectionObject.answerOneHolder.disabled = true;
+       secondSectionObject.answerTwoHolder.disabled = true;
+       secondSectionObject.answerThreeHolder.disabled = true;
+       secondSectionObject.answerFourHolder.disabled = true;
+       secondSectionObject.nextBtn.disabled = false; 
+      });
+    });
+    secondSectionObject.nextBtn.addEventListener('click', function() {
+      secondSectionObject.nextQuestion();
+      secondSectionObject.provideQuestion();
+       secondSectionObject.showQuestionAndAnswers();
+    });
+    secondSectionObject.startSecondGameBtn.addEventListener('click',  thirdSection.generateContentThirdPage.bind(thirdSection))
+
+  }
+  provideQuestion() {
+    if (this.index === this.questions.length) {
+      this.message = `Hey! I don't have any questions for you, your score is ${this.score}`;
+      this.clearQuizContent();
+      this.congrats.innerHTML = '';
+    } else {
+      this.question = this.questions[this.index].question;
+      this.answerOne = this.questions[this.index].answers[1];
+      this.answerTwo = this.questions[this.index].answers[2];
+      this.answerThree = this.questions[this.index].answers[3];
+      this.answerFour = this.questions[this.index].answers[4];
+      this.correctness = this.questions[this.index].correct;
+    }
+  //  console.log(element.innerHTML);
+   // console.log(secondSectionObject.correctness);
+  }
+  showQuestionAndAnswers() {
+   // this.provideQuestion();
+    //show the question
+    this.questionHolder.innerHTML = this.question;
+    this.congrats.innerHTML = "";
+    //show the answer option
+    this.answerOneHolder.innerHTML = this.answerOne;
+    this.answerTwoHolder.innerHTML = this.answerTwo;
+    this.answerThreeHolder.innerHTML = this.answerThree;
+    this.answerFourHolder.innerHTML = this.answerFour;
+   // this.btn = [this.answerOneHolder, this.answerTwoHolder, this.answerThreeHolder, this.answerFourHolder];
+    //make the buttons clickable
+    this.answerOneHolder.disabled = false;
+    this.answerTwoHolder.disabled = false;
+    this.answerThreeHolder.disabled = false;
+    this.answerFourHolder.disabled = false;
+    this.nextBtn.disabled = true;
+   // this.scoreHolder.innerHTML = this.score;
+    this.scoreElement.innerHTML  = this.score; 
+  }
+  correctAnswer() {
+    this.score += 1;
+  }
+  nextQuestion() {
+    this.index += 1;
+  }
+  clearQuizContent() {
+  //  this.message = document.createTextNode(`${firstSectionObj.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`)
+  
+  //    this.congrats.appendChild(this.message)
+    
+    this.congrats.innerHTML =  `${firstSectionObj.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`;
+
+      console.log(this.congrats.innerHTML)
+      console.log(this.congrats)
+    this.questionHolder.remove()
+    this.nextBtn.remove()
+    this.answerOneHolder.remove()
+    this.answerTwoHolder.remove()
+    this.answerThreeHolder.remove()
+    this.answerFourHolder.remove()
+
+
+    this.finalScore = 10 + this.score;
+    this.startSecondGameBtn.innerHTML = "Hey, what is next?";
+    
+     this.allAnswerButton.appendChild(this.startSecondGameBtn);
+   // thirdSection.showNextBtnAfterQuiz()
+  }
+  hideQuizSection() {
+    this.secondSection.classList.add("hide");
+  }
+  generateNewQuizStart() {
+    this.startSecondGameBtn.remove();
+    this.allAnswerButton.remove();
+    this.score = 0
+    //this.generateSecondSectionPageContent();
+    console.log('generateSecondSectionPageContent')
   }
 }
 
 let secondSectionObject = new SecondSection(questionsList, questionsList.question, questionsList.answers, questionsList.correct);
 
-function addEventListenersSecondSection() {}
+class ThirdSection {
+  constructor() {
+    //create the elements
+   // fix it to hide the 2nd section
+    this.parentSection = firstSectionObj.fisrtSection;
+    //generate new elements
+    this.thirdSection = document.createElement('div')
+    this.thirdSectionBanner = document.createElement('div')
+    this.catchButton = document.createElement('button')
+    this.thirdSectionContent = document.createElement('div')
+    this.info = document.createElement('div')
+    this.infoP = document.createElement('p')
+    this.thirdSectionScore = document.createElement('div')
+  }
+  structureThirdSection() {
+    this.parentSection.appendChild(this.thirdSection)
+    this.thirdSection.appendChild(this.thirdSectionBanner)
+    this.thirdSectionBanner.appendChild(this.catchButton)
+    this.thirdSection.appendChild(this.thirdSectionContent)
+    this.thirdSectionContent.appendChild(this.info)
+    this.info.appendChild(this.infoP)
+  }
+  setAttributesElements() {
+    this.thirdSection.setAttribute('id', 'second-game-section')
+    this.thirdSection.setAttribute('class', 'second-game')
+    this.thirdSectionBanner.setAttribute('class', 'banner-second-game')
+    this.catchButton.setAttribute('class', 'catch')
+    this.catchButton.innerHTML = "CATCH ME! "
+    this.thirdSectionContent.setAttribute('id', 'second-game-content')
+  //  this.info.setAttribute('')
+   // this.infoP.setAttribute('', '')
+   // this.thirdSectionScore.setAttribute('', '')
+  }
+  generateContentThirdPage() {
+     // secondSectionObject.hideQuizSection();
+    this.structureThirdSection();
+    this.setAttributesElements();
+    //debug
+    secondSectionObject.generateNewQuizStart()
+    console.log('generateContentThirdPage')
+  }
+  generateAndAddListenersThirdPage() {
+
+  }
+
+}
+
+let thirdSection = new ThirdSection();
+
 
 function startCode() {
   firstSectionObj.generateFirstSectionPageContent();
   addEventListenersFirstSection();
+ 
 }
 
 startCode();
+
+
+//add it to the 2rd section (to oprn if from quiz)
+//#second-game-section (section)

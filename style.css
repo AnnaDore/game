@@ -321,7 +321,7 @@ footer {
     display: flex;
     align-items: center;
 }
- #question-container {
+#question-container {
     position: absolute;
     top: 30%;
     left: 50%; 
@@ -329,7 +329,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 10%;
     
 }
 #all-buttons {
@@ -399,6 +399,7 @@ footer {
 #question {
     font-size: 2em;
     margin-bottom: 40px;
+    text-align: center;
 } 
 #answer-buttons {
     display: flex;
@@ -408,7 +409,8 @@ footer {
    
 }
 .btn-answer {
-   width: 100px;
+   width: 150px;
+   padding: 10px 0;
    margin-right: 10px;
    font-size: 1.1em;
    cursor: pointer;
@@ -416,14 +418,17 @@ footer {
 }
 
 #congratulation {
+    text-align: center; 
     position: relative;
     margin-bottom: 20px;;
     font-size: 1.3em;
 }
 
 .next {
-    width: 100px;
+    width: 150px;
     padding: 10px;
+    position: relative;
+    left: 38%;
 }
 #start-second-game {
     width: 200px;
