@@ -18,12 +18,12 @@ class FirstSection {
     this.startBtn = document.createElement("button");
     this.home = document.getElementById("game-status");
     this.contact = document.getElementById("contact");
+    console.log("1st page createelements");
   }
   setAttributesElements() {
     //here set all attributes for the created elements
-
     this.p.innerHTML = `Hey ${this.inputName.value}! I have a nice game for you!If you wanna play - click the Start button!`;
-
+    this.home.innerHTML = 'You are in game'
     this.contact.setAttribute("href", "#footer-scroll");
     // this.inputName.setAttribute('id', )
 
@@ -57,6 +57,7 @@ class FirstSection {
     this.setAttributesElements();
     this.structureFirstSection();
     addEventListenersFirstSection();
+   // this.strangerNameLength()
     console.log("1st page generateFirstSectionPageContent");
   }
   strangerNameLength() {
@@ -166,6 +167,7 @@ class SecondSection {
     this.scoreElement.innerHTML = this.score;
 
     //elements for the question, answers, button
+    
     this.questionHolder.setAttribute("id", "question");
     this.allButtons.setAttribute("id", "all-button");
     this.allAnswerButton.setAttribute("id", "answer-buttons");
@@ -211,7 +213,10 @@ class SecondSection {
     this.allButtons.appendChild(this.nextBtn);
   }
   generateSecondSectionPageContent() {
+
     firstSectionObj.removeFirstSectionCreateSecondSection();
+    this.index = 0
+    this.score = 0
     this.createSecondPageElements();
     this.structureSecondSection();
     this.setAttributesElements();
@@ -220,13 +225,13 @@ class SecondSection {
     this.showQuestionAndAnswers();
   }
   generateAndAddListenetrsTest() {
-    console.log("removed 1st section!");
+   // console.log("removed 1st section!");
     this.generateSecondSectionPageContent();
     const myBtn = [...document.getElementsByClassName("btn-answer")];
     myBtn.forEach((element) => {
       element.addEventListener("click", function () {
         if (element.innerHTML === secondSectionObject.correctness) {
-          alert("correct");
+         // alert("correct");
           secondSectionObject.correctAnswer();
           secondSectionObject.scoreElement.innerHTML =
             secondSectionObject.score;
@@ -262,6 +267,7 @@ class SecondSection {
   }
   provideQuestion() {
     console.log(this.index);
+    console.log(this.score);
     if (this.index === this.questions.length) {
       this.message = `Hey! I don't have any questions for you, your score is ${this.score}`;
       console.log(this.index);
@@ -415,7 +421,7 @@ function addListenerCatchBtn() {
           thirdSectionObject.catchBtn.innerHTML = "Let's check the results!";
           thirdSectionObject.catchBtn.addEventListener("click", function () {
             thirdSectionObject.removeThirdPageAddFourthPage();
-            console.log("addListenerCatchBtn");
+            
           });
         });
       });
@@ -444,6 +450,7 @@ class FinalSection {
     this.layeredImage.appendChild(this.animatedImage);
   }
   setAttribute() {
+    firstSectionObj.home.innerHTML = 'Start game again'
     this.finalSection.setAttribute("class", "animation");
     this.layeredImage.setAttribute("class", "layered-image");
     this.lastBanner.setAttribute("class", "banner-finish-game");
