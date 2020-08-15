@@ -19,7 +19,7 @@ const questionsList = [
         },
         correct: 'Football'
     }, 
-    {
+     {
         question: "What does Au stand for in the periodic table?",
         answers: {
             1: 'Still',
@@ -38,5 +38,5 @@ const questionsList = [
             4: 'Rekyavik'
         },
         correct: 'Rekyavik'
-    },    
+    },   
 ]  
