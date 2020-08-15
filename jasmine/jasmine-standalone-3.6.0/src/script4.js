@@ -87,7 +87,7 @@ class FirstSection {
     //prepare for the next game iteration and hide the section
     this.cleanFirstSection();
     this.hideFurstSection();
-    console.log("home");
+    console.log("removeANdHideFirstSection");
     return this.inputName.value;
   }
 }
@@ -182,7 +182,10 @@ class SecondSection {
     this.startSecondGameBtn.setAttribute('href', '#second-game-section');
     this.startSecondGameBtn.setAttribute('id', 'start-second-game');
     this.startSecondGameBtn.innerHTML = "hey, what is next?"
-   
+    this.setQuizPartOnly()
+  }
+  setQuizPartOnly(){
+    
   }
   structureSecondSection() {
     //add a new page
@@ -313,10 +316,7 @@ class SecondSection {
   
   //    this.congrats.appendChild(this.message)
     
-    this.congrats.innerHTML =  `${firstSectionObj.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`;
-
-    console.log(this.congrats.innerHTML)
-    console.log(this.congrats)
+    //this.congrats.innerHTML =  `${firstSectionObj.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`;
     this.questionHolder.remove()
     this.nextBtn.remove()
     this.answerOneHolder.remove()
@@ -611,7 +611,7 @@ function homeRestartGameBtn() {
   firstSectionObj.home.addEventListener('click', function() {
     if (thirdSection.thirdSection.classList.contains('hide')){
       finalSectionObj.finalSection.classList.toggle('hide')
-       firstSectionObj.fisrtSection.classList.toggle("hide");
+      firstSectionObj.fisrtSection.classList.toggle("hide");
       firstSectionObj.generateFirstSectionPageContent()  
       firstSectionObj.home.innerHTML = 'You are in game'
 /*       secondSectionObject.
