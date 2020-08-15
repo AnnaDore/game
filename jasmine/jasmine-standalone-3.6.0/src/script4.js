@@ -1,6 +1,7 @@
 //2nd attempt
 class FirstSection {
   constructor() {
+    this.body = document.getElementsByTagName('body')[0]
     this.parentSection = document.getElementsByClassName("parent-element")[0];
     //generate a content of the 1st page
     //full page with the background
@@ -16,9 +17,20 @@ class FirstSection {
     this.startBtn = document.createElement("button");
     this.home = document.getElementById("game-status");
     this.contact = document.getElementById("contact");
+   
   }
   setAttributesElements() {
     //here set all attributes for the created elements
+
+    this.p.innerHTML = `Hey ${this.inputName.value}! I have a nice game for you!If you wanna play - click the Start button!`;
+   
+   
+    this.contact.setAttribute("href", "#footer-scroll");
+    // this.inputName.setAttribute('id', )
+    console.log('1st page setAttributesElements')
+    this.setAttributesFirstContent()
+  }
+  setAttributesFirstContent() {
     this.fisrtSection.setAttribute("class", "first-section");
     this.fisrtSection.setAttribute("id", "start-game-again");
     this.fisrtSectionBackground.setAttribute("class", "banner");
@@ -29,16 +41,16 @@ class FirstSection {
     this.inputName.setAttribute("placeholder", "Your name");
     this.submit.setAttribute("class", "name-btn");
     this.submit.innerHTML = "That's my name";
-    this.p.innerHTML = `Hey ${this.inputName.value}! I have a nice game for you!If you wanna play - click the Start button!`;
-    this.startBtn.classList.add("start-btn");
-    this.startBtn.innerHTML = "START";
-    this.contact.setAttribute("href", "#footer-scroll");
-    // this.inputName.setAttribute('id', )
   }
   structureFirstSection() {
     //append all children
     this.parentSection.appendChild(this.fisrtSection);
     this.fisrtSection.appendChild(this.fisrtSectionBackground);
+
+    console.log('1st page structureFirstSection')
+    this.structureFirstCOntent()
+  }
+  structureFirstCOntent(){
     this.fisrtSection.appendChild(this.contentHolder);
     this.contentHolder.appendChild(this.h2);
     this.contentHolder.appendChild(this.h3);
@@ -49,43 +61,66 @@ class FirstSection {
     //attach atrributes and structure the page
     this.setAttributesElements();
     this.structureFirstSection();
+
+    console.log('1st page generateFirstSectionPageContent')
+
   }
   strangerNameLength() {
     //user must leave input
+    console.log('1st page strangerNameLength')
+
     return this.inputName.value.length;
   }
   addPAndButton() {
     //greet a user and add start button
+    
+    this.startBtn.classList.add("start-btn");
+    this.startBtn.innerHTML = "START";
     this.contentHolder.appendChild(this.p);
     this.contentHolder.appendChild(this.startBtn);
+    console.log('1st page addPAndButton')
+
   }
   greetAfterClick() {
     //greet a user by name input
-    this.generateFirstSectionPageContent();
+    console.log('1st page greetAfterClick')
+
+  //  this.generateFirstSectionPageContent();
     if (this.strangerNameLength() > 0) {
       this.addPAndButton();
     } else {
       alert("please, put your name");
     }
+
   }
   cleanFirstSection() {
     //be ready to reuse this page again
-    //debug below
-   // this.p.innerHTML = "";
-   this.p.remove()
+    this.p.remove()
     //debug above
+    this.startBtn.removeEventListener(
+      "click", secondSectionObject.generateAndAddListenetrsTest.bind(secondSectionObject)
+    );
     this.startBtn.remove();
     this.inputName.value = "";
     secondSectionObject.score = 0;
-    //secondSectionObject.index = 0;
+    console.log('cleanFirstSection')
 
   }
   hideFurstSection() {
-    this.fisrtSection.classList.add("hide");
+  //  this.fisrtSection.classList.toggle("hide");
+//  firstSectionObj.parentSection.removeChild(firstSectionObj.parentSection.lastChild)
+    this.parentSection.removeChild(this.parentSection.lastChild)
+    console.log('hideFurstSection')
+
+  }
+  prepareFirstSectionsAGain() {
+    this.structureFirstSection()
+    this.structureFirstCOntent()
   }
   removeANdHideFirstSection() {
     //prepare for the next game iteration and hide the section
     this.cleanFirstSection();
+    this.prepareFirstSectionsAGain()
     this.hideFurstSection();
     console.log("removeANdHideFirstSection");
     return this.inputName.value;
@@ -98,15 +133,14 @@ function addEventListenersFirstSection() {
     "click",
     firstSectionObj.greetAfterClick.bind(firstSectionObj)
   );
-  //  firstSectionObj.startBtn.addEventListener('click', )
-  firstSectionObj.home.addEventListener(
+/*   firstSectionObj.home.addEventListener(
     "click",
     firstSectionObj.removeANdHideFirstSection.bind(firstSectionObj)
-  );
+  ); */
   firstSectionObj.startBtn.addEventListener(
     "click", secondSectionObject.generateAndAddListenetrsTest.bind(secondSectionObject)
-    
   );
+  console.log('addEventListenersFirstSection')
 }
 
 //quiz section
@@ -141,7 +175,6 @@ class SecondSection {
     this.answerThreeHolder = document.createElement('button');
     this.answerFourHolder = document.createElement('button');
     
-   // this.btn = [this.answerOneHolder, this.answerTwoHolder, this.answerThreeHolder, this.answerFourHolder];
     this.congrats = document.createElement('div');
     //answer buttons 
     this.answerOneHolder = document.createElement('button');
@@ -164,6 +197,10 @@ class SecondSection {
     this.scoreText.innerHTML = 'your score is: '
     this.scoreElement.setAttribute('id', 'score')
     this.scoreElement.innerHTML  = this.score; 
+    
+    this.setAttributesElementsContent()
+  }
+  setAttributesElementsContent(){
     //elements for the question, answers, button
     this.questionHolder.setAttribute('id', 'question');
     this.allButtons.setAttribute('id', 'all-button')
@@ -174,7 +211,6 @@ class SecondSection {
     this.answerTwoHolder.setAttribute('class', 'btn-answer');
     this.answerThreeHolder.setAttribute('class', 'btn-answer');
     this.answerFourHolder.setAttribute('class', 'btn-answer');
-   // this.btn = [...document.getElementsByClassName('btn-answer')];
     //next quiz button
     this.nextBtn.setAttribute('class', 'btn next');
     this.nextBtn.innerHTML = 'NEXT'
@@ -182,10 +218,6 @@ class SecondSection {
     this.startSecondGameBtn.setAttribute('href', '#second-game-section');
     this.startSecondGameBtn.setAttribute('id', 'start-second-game');
     this.startSecondGameBtn.innerHTML = "hey, what is next?"
-    this.setQuizPartOnly()
-  }
-  setQuizPartOnly(){
-    
   }
   structureSecondSection() {
     //add a new page
@@ -199,6 +231,10 @@ class SecondSection {
     //add elements to the score wrapper
     this.scoreWrapper.appendChild(this.scoreText);
     this.scoreWrapper.appendChild(this.scoreElement);
+    
+    this.structureSecondPageContent();
+  }
+  structureSecondPageContent() {
     //add all buttons elemnt (which has a question, answers, congrats section and button next (later))
     this.questionContainer.appendChild(this.allButtons)
     this.allButtons.appendChild(this.questionHolder); 
@@ -212,40 +248,35 @@ class SecondSection {
     this.allButtons.appendChild(this.congrats)
     //next quiz btn
     this.allButtons.appendChild(this.nextBtn);
-
   }
   generateSecondSectionPageContent() {
+    
     firstSectionObj.removeANdHideFirstSection();
     this.structureSecondSection();
     this.setAttributesElements();
     
     this.provideQuestion();
     this.showQuestionAndAnswers();
-    //debug restart show only 1 question
-   // this.nextQuestion()
-
   }
   generateAndAddListenetrsTest() {
+    console.log('removed 1st section!')
     this.generateSecondSectionPageContent();
     const myBtn = [...document.getElementsByClassName('btn-answer')];
     myBtn.forEach(element => {
       element.addEventListener('click', function() {
         if (element.innerHTML === secondSectionObject.correctness) {
-       //   alert("correct")
-           secondSectionObject.correctAnswer()
+          alert('correct')
+          secondSectionObject.correctAnswer()
           secondSectionObject.scoreElement.innerHTML = secondSectionObject.score;
           secondSectionObject.questionHolder.innerHTML = secondSectionObject.question;
            secondSectionObject.congrats.innerHTML = 'Correct!!!';
           secondSectionObject.nextBtn.disabled = false; 
-          
          }
          else {
-      //    alert('incorrect')
           //show correct answer
            secondSectionObject.questionHolder.innerHTML = secondSectionObject.question;
           secondSectionObject.congrats.innerHTML = `sorry, but a correct answer is ${secondSectionObject.correctness}`;
           secondSectionObject.nextBtn.disabled = false; 
-          
         }
          //work with the next button
        secondSectionObject.answerOneHolder.disabled = true;
@@ -254,19 +285,23 @@ class SecondSection {
        secondSectionObject.answerFourHolder.disabled = true;
        secondSectionObject.nextBtn.disabled = false; 
       });
-    });
+    }
+    
+    
+    );
     secondSectionObject.nextBtn.addEventListener('click', function() {
       secondSectionObject.nextQuestion();
       secondSectionObject.provideQuestion();
        secondSectionObject.showQuestionAndAnswers();
     });
     secondSectionObject.startSecondGameBtn.addEventListener('click',  secondSectionObject.generateNewQuizHideItAddThirdSection.bind(secondSectionObject))
-   // generateNewQuizStart
-    //below is good above is debug
-    //secondSectionObject.startSecondGameBtn.addEventListener('click',  thirdSection.generateContentThirdPage.bind(thirdSection))
-
+    console.log('generateAndAddListenetrsTest')
+  }
+  listenAndRemove() {
+    
   }
   provideQuestion() {
+    console.log(this.index)
     if (this.index === this.questions.length) {
       this.message = `Hey! I don't have any questions for you, your score is ${this.score}`;
       console.log(this.index)
@@ -280,11 +315,9 @@ class SecondSection {
       this.answerFour = this.questions[this.index].answers[4];
       this.correctness = this.questions[this.index].correct;
     }
-  //  console.log(element.innerHTML);
-   // console.log(secondSectionObject.correctness);
+
   }
   showQuestionAndAnswers() {
-   // this.provideQuestion();
     //show the question
     this.questionHolder.innerHTML = this.question;
     this.congrats.innerHTML = "";
@@ -293,14 +326,12 @@ class SecondSection {
     this.answerTwoHolder.innerHTML = this.answerTwo;
     this.answerThreeHolder.innerHTML = this.answerThree;
     this.answerFourHolder.innerHTML = this.answerFour;
-   // this.btn = [this.answerOneHolder, this.answerTwoHolder, this.answerThreeHolder, this.answerFourHolder];
     //make the buttons clickable
     this.answerOneHolder.disabled = false;
     this.answerTwoHolder.disabled = false;
     this.answerThreeHolder.disabled = false;
     this.answerFourHolder.disabled = false;
     this.nextBtn.disabled = true;
-   // this.scoreHolder.innerHTML = this.score;
     this.scoreElement.innerHTML  = this.score; 
   }
   correctAnswer() {
@@ -312,13 +343,9 @@ class SecondSection {
     console.log('nextQuestion index+1')
   }
   clearQuizContent() {
-  //  this.message = document.createTextNode(`${firstSectionObj.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`)
-  
-  //    this.congrats.appendChild(this.message)
-    
-    //this.congrats.innerHTML =  `${firstSectionObj.inputName.value}, let\'s check a new adventure! Maybe you can increase your score even more?`;
     this.questionHolder.remove()
     this.nextBtn.remove()
+   // this.answerOneHolder.removeEventListener()
     this.answerOneHolder.remove()
     this.answerTwoHolder.remove()
     this.answerThreeHolder.remove()
@@ -331,111 +358,47 @@ class SecondSection {
 
     this.finalScore = 10 + this.score;
     this.startSecondGameBtn.innerHTML = "Hey, what is next?";
-    
      this.questionContainer.appendChild(this.startSecondGameBtn);
      console.log('clearQuizContent')
-   // thirdSection.showNextBtnAfterQuiz()
+
   }
   hideQuizSection() {
-    //this.textMethodClearAndGenerateAgainQuiz()
-    this.secondSection.classList.toggle("hide");
+    this.secondSection.classList.add("hide");
     console.log('hideQuizSection')
   }
   generateNewQuizStart() {
-/*     if(this.startSecondGameBtn) {
-      this.startSecondGameBtn.remove();
-    }
-    if(this.allAnswerButton) {
-      this.allAnswerButton.remove();
-    } */
-   // this.allAnswerButton.remove();
-    this.score = 0
-    //this.generateSecondSectionPageContent();
-    console.log('generateSecondSectionPageContent')
-
-   // this.generateAndAddListenetrsTest();
-   //less elements without question container
-   this.questionHolder = document.createElement('div');
-   this.allButtons = document.createElement('div');
-   this.allAnswerButton = document.createElement('div')
-   this.answerOneHolder = document.createElement('button');
-   this.answerTwoHolder = document.createElement('button');
-   this.answerThreeHolder = document.createElement('button');
-   this.answerFourHolder = document.createElement('button');
-   
-  // this.btn = [this.answerOneHolder, this.answerTwoHolder, this.answerThreeHolder, this.answerFourHolder];
-   this.congrats = document.createElement('div');
-   //answer buttons 
-   this.answerOneHolder = document.createElement('button');
-   this.answerTwoHolder = document.createElement('button');
-   this.answerThreeHolder = document.createElement('button');
-   this.answerFourHolder = document.createElement('button');
-   //next quiz button
-   this.nextBtn = document.createElement('button');
-   this.nextBtn.disabled = true;
-   //add next game opening button
-  // this.startSecondGameBtn = document.createElement('button');
-   //for the text
-   this.message = ''
-
-    //set
-     //elements for the question, answers, button
-     this.questionHolder.setAttribute('id', 'question');
-     this.allButtons.setAttribute('id', 'all-button')
-     this.allAnswerButton.setAttribute('id', 'answer-buttons');
-     this.congrats.setAttribute('id', 'congratulation');
-     //answer buttons
-     this.answerOneHolder.setAttribute('class', 'btn-answer');
-     this.answerTwoHolder.setAttribute('class', 'btn-answer');
-     this.answerThreeHolder.setAttribute('class', 'btn-answer');
-     this.answerFourHolder.setAttribute('class', 'btn-answer');
-    // this.btn = [...document.getElementsByClassName('btn-answer')];
-     //next quiz button
-     this.nextBtn.setAttribute('class', 'btn next');
-     this.nextBtn.innerHTML = 'NEXT'
-         //add a button to open the next game
-   //  this.startSecondGameBtn.setAttribute('href', '#second-game-section');
-    // this.startSecondGameBtn.setAttribute('id', 'start-second-game');
-    // this.startSecondGameBtn.innerHTML = "hey, what is next?"
-
-    //structe
-    //add all buttons elemnt (which has a question, answers, congrats section and button next (later))
-    this.questionContainer.appendChild(this.allButtons)
-    this.allButtons.appendChild(this.questionHolder); 
-    this.allButtons.appendChild(this.allAnswerButton);
-    //add answer buttons separatelly
-    this.allAnswerButton.appendChild(this.answerOneHolder)
-    this.allAnswerButton.appendChild(this.answerTwoHolder)
-    this.allAnswerButton.appendChild(this.answerThreeHolder)
-    this.allAnswerButton.appendChild(this.answerFourHolder)
-    //congrats (text) section
-    this.allButtons.appendChild(this.congrats)
-    //next quiz btn
-    this.allButtons.appendChild(this.nextBtn);
+    this.index = 0;
+    this.score = 0;
+    this.scoreElement.innerHTML = this.score;
     this.startSecondGameBtn.remove()
-
-   //debug above
-   this.index = 0;
+    this.setAttributesElementsContent();
+    this.structureSecondPageContent()
+ 
     this.provideQuestion();
-    this.showQuestionAndAnswers();
+    this.showQuestionAndAnswers() 
+    console.log(this.score)
+    console.log(this.index)
+  //  this.showQuestionAndAnswers();
     console.log('generateNewQuizStart')
-
   }
   textMethodClearAndGenerateAgainQuiz() {
-    //secondSectionObject.clearQuizContent();
-   
-   // secondSectionObject.startSecondGameBtn.remove()
-    secondSectionObject.generateNewQuizStart();
-    this.generateAndAddListenetrsTest()
+    this.generateNewQuizStart();
     console.log('textMethodClearAndGenerateAgainQuiz')
   }
   generateNewQuizHideItAddThirdSection() {
-   
-    thirdSection.generateContentThirdPage()
-    this.textMethodClearAndGenerateAgainQuiz()
-    this.hideQuizSection()
-    thirdSection.generateAndAddListenersThirdPage()
-    console.log('generateNewQuizHideItAddThirdSection')
+    //1. clear
+    this.clearQuizContent()
+    //2. Quiz again
+    this.generateNewQuizStart();
+    console.log(this.score)
+    console.log(this.index)
+    //3. hide
+    this.secondSection.classList.add("hide");
+    firstSectionObj.parentSection.removeChild(firstSectionObj.parentSection.lastChild)
+    //4. generate 3dr section
+    thirdSectionObject.generateAndAddListenersThirdPage()
+
+    console.log('generateNewQuizHideItAddThirdSection') 
   }
 }
 
@@ -446,6 +409,7 @@ class ThirdSection {
     //create the elements
    // fix it to hide the 2nd section
     this.parentSection = firstSectionObj.parentSection;
+   // this.parentSection = secondSectionObject.secondSection;
     //generate new elements
     this.thirdSection = document.createElement('div')
     this.thirdSectionBanner = document.createElement('div')
@@ -460,6 +424,10 @@ class ThirdSection {
   structureThirdSection() {
     this.parentSection.appendChild(this.thirdSection)
     this.thirdSection.appendChild(this.thirdSectionBanner)
+    
+    this.structureThirdPageContent();
+  }
+  structureThirdPageContent() {
     this.thirdSectionBanner.appendChild(this.catchBtn)
     this.thirdSection.appendChild(this.thirdSectionContent)
     this.thirdSectionContent.appendChild(this.info)
@@ -471,90 +439,85 @@ class ThirdSection {
     this.thirdSection.setAttribute('id', 'second-game-section')
     this.thirdSection.setAttribute('class', 'second-game')
     this.thirdSectionBanner.setAttribute('class', 'banner-second-game')
+    this.setAttributesThirdContent()
+  }
+  setAttributesThirdContent() {
     this.catchBtn.setAttribute('class', 'catch')
     this.catchBtn.innerHTML = "CATCH ME!"
     this.infoP.innerHTML = 'So... Next challenge is - try to catch the button!'
     //score
     this.thirdSectionContent.setAttribute('id', 'second-game-content')
-   
-  //  this.info.setAttribute('')
-   // this.infoP.setAttribute('', '')
-   // this.thirdSectionScore.setAttribute('', '')
-
    //text and score
    this.thirdScore.setAttribute('class', 'score-wrapper-second-game')
   }
-  generateContentThirdPage() {
-     // secondSectionObject.hideQuizSection();
+  generateThirdPage() {
     this.structureThirdSection();
     this.setAttributesElements();
-    //debug
-   // secondSectionObject.generateNewQuizStart()
+  }
+  generateContentThirdPage() {
+    this.structureThirdPageContent();
+    this.setAttributesThirdContent();
     console.log('generateContentThirdPage')
   }
   gameHolders() {
     this.thirdSection.classList.toggle('hide')
     this.thirdScore.innerHTML = ''
-  //  secondSectionObject.hideQuizSection();
   }
   generateAndAddListenersThirdPage() {
-    this.generateContentThirdPage();
+    this.generateThirdPage()
+   // this.generateContentThirdPage();
     thirdSectionListeners()
     addListenerCatchBtn()
     console.log('generateAndAddListenersThirdPage')
   }
   resetThirdPage() {
-    
-/*     if(this.catchBtn.innerHTML = 'Let\'s check the results!') {
-      this.catchBtn.innerHTML = 'CATCH ME!';
-    }
-    this.thirdScore.className = 'catch' */
-    
-    //debug below
-  //  this.info.innerHTML = 'So... Next challenge is - try to catch the button!'
-    //this.thirdScore.innerHTML = ''
-    //addListenerCatchBtn()
     this.infoP.remove()
     this.info.remove()
     this.thirdScore.remove()
     this.catchBtn.remove()
-    //debug above
-    
   }
   hideThirdPage(){
     this.thirdSection.classList.toggle('hide')
   }
   resetHideShowLastPage() {
+    //clean, 
     this.resetThirdPage();
-    this.hideThirdPage();
+    firstSectionObj.parentSection.removeChild(firstSectionObj.parentSection.lastChild)
+    //generate content again
+   // this.generateContentThirdPage()
+    //generate new page
     finalSectionObj.generateContent() 
+    //add hide to the 3th, remove hide from 4th
+   // this.thirdSection.classList.add('hide')
+   // finalSectionObj.finalSection.classList.remove('hide')
+   
   }
 }
 
-let thirdSection = new ThirdSection();
+let thirdSectionObject = new ThirdSection();
 function addListenerCatchBtn() {
-  thirdSection.catchBtn.addEventListener('click', function() {
-    thirdSection.catchBtn.classList.add('first')
-    thirdSection.catchBtn.addEventListener('click', function() {
-        thirdSection.catchBtn.classList.remove('first')
-        thirdSection.catchBtn.classList.add('second')
-        thirdSection.catchBtn.addEventListener('click', function() {
-            thirdSection.catchBtn.classList.remove('second')
-            thirdSection.catchBtn.classList.add('third')
-            thirdSection.catchBtn.addEventListener('click', function() {
-                thirdSection.info.innerHTML = "It was a small joke 😀 Here are 10 points for you!"
+  console.log('addListenerCatchBtn')
+  thirdSectionObject.catchBtn.addEventListener('click', function() {
+    thirdSectionObject.catchBtn.classList.add('first')
+    thirdSectionObject.catchBtn.addEventListener('click', function() {
+      thirdSectionObject.catchBtn.classList.remove('first')
+      thirdSectionObject.catchBtn.classList.add('second')
+      thirdSectionObject.catchBtn.addEventListener('click', function() {
+        thirdSectionObject.catchBtn.classList.remove('second')
+        thirdSectionObject.catchBtn.classList.add('third')
+        thirdSectionObject.catchBtn.addEventListener('click', function() {
+          thirdSectionObject.info.innerHTML = "It was a small joke 😀 Here are 10 points for you!"
+          console.log('addListenerCatchBtn')
+
                 secondSectionObject.score += 10
-                thirdSection.thirdScore.innerHTML = `YOUR SCORE IS: ${secondSectionObject.finalScore}`
-                thirdSection.catchBtn.classList.toggle('third')
-                thirdSection.catchBtn.innerHTML = 'Let\'s check the results!'
-                thirdSection.catchBtn.addEventListener('click', function() {
-                  thirdSection.resetHideShowLastPage()
-                //  thirdSection.resetThirdPage()
-  /*                 finalSectionObj.finalSection.classList.toggle('hide')
-                  thirdSection.classList.toggle('hide')
-                  firstSectionObj.home.innerHTML = 'Start game again';
-                        //trackHomeButton();
-                        fourthSectionObj.generateContent()   */          
+                thirdSectionObject.thirdScore.innerHTML = `YOUR SCORE IS: ${secondSectionObject.finalScore}`
+                thirdSectionObject.catchBtn.classList.toggle('third')
+                thirdSectionObject.catchBtn.innerHTML = 'Let\'s check the results!'
+                thirdSectionObject.catchBtn.addEventListener('click', function() {
+                  thirdSectionObject.resetHideShowLastPage()
+                  console.log('addListenerCatchBtn')
+
+        
           }) 
         })
       })
@@ -564,7 +527,7 @@ function addListenerCatchBtn() {
 
 
 function thirdSectionListeners() {
-  secondSectionObject.startSecondGameBtn.addEventListener('click', thirdSection.gameHolders.bind(thirdSection))
+  secondSectionObject.startSecondGameBtn.addEventListener('click', thirdSectionObject.generateAndAddListenersThirdPage.bind(thirdSectionObject))
 }
 
 
@@ -599,25 +562,40 @@ class FinalSection {
   generateContent() {
     this.setAttribute()
     this.structureLastSection()
-   // firstSectionObj.home.addEventListener('click', )
    firstSectionObj.home.innerHTML = 'Start game again'
    homeRestartGameBtn()
+   console.log('generatecontentlastpage')
   }
 }
 
 let finalSectionObj = new FinalSection();
 
 function homeRestartGameBtn() {
+  console.log('homeRestartGameBtn')
   firstSectionObj.home.addEventListener('click', function() {
-    if (thirdSection.thirdSection.classList.contains('hide')){
-      finalSectionObj.finalSection.classList.toggle('hide')
-      firstSectionObj.fisrtSection.classList.toggle("hide");
-      firstSectionObj.generateFirstSectionPageContent()  
-      firstSectionObj.home.innerHTML = 'You are in game'
-/*       secondSectionObject.
-      thirdSection. */
-    }
-  })
+    console.log('homeRestartGameBtn')
+   // if (thirdSectionObject.thirdSection.classList.contains('hide')){
+
+
+    // firstSectionObj.fisrtSection.classList.remove("hide");
+     // firstSectionObj.generateFirstSectionPageContent()
+     // finalSectionObj.finalSection.classList.add('hide')  
+     // firstSectionObj.home.innerHTML = 'You are in game'
+/*       firstSectionObj.home.removeEventListener('click', function() {} )
+      secondSectionObject.secondSection.remove();
+      thirdSectionObject.thirdSection.remove()
+      finalSectionObj.finalSection.remove()
+      firstSectionObj.fisrtSection.remove() */
+      
+      
+      
+      firstSectionObj.parentSection.removeChild(firstSectionObj.parentSection.lastChild)
+      startCode();
+     // firstSectionObj.home.remove()
+      console.log('homeRestartGameBtn')
+  //  }
+    
+})
 }
 
 function startCode() {
@@ -628,6 +606,3 @@ function startCode() {
 
 startCode();
 
-
-//add it to the 2rd section (to oprn if from quiz)
-//#second-game-section (section)
