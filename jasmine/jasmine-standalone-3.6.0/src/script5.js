@@ -3,8 +3,6 @@ parentSection = document.getElementsByClassName("parent-element")[0];
 
 class FirstSection {
   constructor() {
-    this.body = document.getElementsByTagName("body")[0];
-    //this.parentSection = document.getElementsByClassName("parent-element")[0];
   }
   createFirstPageElements() {
     //generate a content of the 1st page
@@ -102,9 +100,6 @@ class SecondSection {
     this.score = 0;
     this.finalScore = 0;
     this.index = 0;
-    
-    //content of the second section
-    this.parentSection = firstSectionObj.parentSection;
   }
   createSecondPageElements() {
     //generate a content of the 2nd page
@@ -116,7 +111,6 @@ class SecondSection {
     this.scoreText = document.createElement("div");
     this.scoreElement = document.createElement("div");
     //elements for the question, answers, button
-
     this.questionHolder = document.createElement("div");
     this.allButtons = document.createElement("div");
     this.allAnswerButton = document.createElement("div");
@@ -124,7 +118,6 @@ class SecondSection {
     this.answerTwoHolder = document.createElement("button");
     this.answerThreeHolder = document.createElement("button");
     this.answerFourHolder = document.createElement("button");
-
     this.congrats = document.createElement("div");
     //answer buttons
     this.answerOneHolder = document.createElement("button");
@@ -144,9 +137,7 @@ class SecondSection {
     this.scoreText.innerHTML = "your score is: ";
     this.scoreElement.setAttribute("id", "score");
     this.scoreElement.innerHTML = this.score;
-
     //elements for the question, answers, button
-
     this.questionHolder.setAttribute("id", "question");
     this.allButtons.setAttribute("id", "all-button");
     this.allAnswerButton.setAttribute("id", "answer-buttons");
@@ -176,7 +167,6 @@ class SecondSection {
     //add elements to the score wrapper
     this.scoreWrapper.appendChild(this.scoreText);
     this.scoreWrapper.appendChild(this.scoreElement);
-
     //add all buttons elemnt (which has a question, answers, congrats section and button next (later))
     this.questionContainer.appendChild(this.allButtons);
     this.allButtons.appendChild(this.questionHolder);
@@ -198,7 +188,6 @@ class SecondSection {
     this.createSecondPageElements();
     this.structureSecondSection();
     this.setAttributesElements();
-
     this.provideQuestion();
     this.showQuestionAndAnswers();
   }
@@ -242,8 +231,6 @@ class SecondSection {
     );
   }
   provideQuestion() {
-    console.log(this.index);
-    console.log(this.score);
     if (this.index === this.questions.length) {
         this.clearQuizContent();
     } else {
@@ -274,11 +261,9 @@ class SecondSection {
   }
   correctAnswer() {
     this.score += 1;
-    console.log("correct answer score+1");
   }
   nextQuestion() {
     this.index += 1;
-    console.log("nextQuestion index+1");
   }
   clearQuizContent() {
     this.questionHolder.remove();
@@ -292,14 +277,12 @@ class SecondSection {
     this.finalScore = 10 + this.score;
     this.startSecondGameBtn.innerHTML = "Hey, what is next?";
     this.questionContainer.appendChild(this.startSecondGameBtn);
-    console.log("clearQuizContent");
   }
   removeSecondPageAddThirdPage() {
     parentSection.removeChild(
       parentSection.lastChild
     );
     thirdSectionObject.generateThirdPage();
-    console.log("removeSecondPageAddThirdPage");
   }
 }
 
@@ -312,10 +295,7 @@ let secondSectionObject = new SecondSection(
 
 class ThirdSection {
   constructor() {
-    //create the elements
-    // fix it to hide the 2nd section
-  //  this.parentSection = firstSectionObj.parentSection;
-    // this.parentSection = secondSectionObject.secondSection;
+      
   }
   createThirdPageElements() {
     //generate new elements
@@ -332,7 +312,6 @@ class ThirdSection {
   structureThirdSection() {
     parentSection.appendChild(this.thirdSection);
     this.thirdSection.appendChild(this.thirdSectionBanner);
-
     this.thirdSectionBanner.appendChild(this.catchBtn);
     this.thirdSection.appendChild(this.thirdSectionContent);
     this.thirdSectionContent.appendChild(this.info);
@@ -370,7 +349,6 @@ class ThirdSection {
 let thirdSectionObject = new ThirdSection();
 
 function addListenerCatchBtn() {
-  console.log("addListenerCatchBtn");
   thirdSectionObject.catchBtn.addEventListener("click", function () {
     thirdSectionObject.catchBtn.classList.add("first");
     thirdSectionObject.catchBtn.addEventListener("click", function () {
@@ -382,8 +360,6 @@ function addListenerCatchBtn() {
         thirdSectionObject.catchBtn.addEventListener("click", function () {
           thirdSectionObject.info.innerHTML =
             "It was a small joke 😀 Here are 10 points for you!";
-          console.log("addListenerCatchBtn");
-
           secondSectionObject.score += 10;
           thirdSectionObject.thirdScore.innerHTML = `YOUR SCORE IS: ${secondSectionObject.finalScore}`;
           thirdSectionObject.catchBtn.classList.toggle("third");
@@ -399,9 +375,7 @@ function addListenerCatchBtn() {
 
 class FinalSection {
   constructor() {
-    //parent
-  //  this.parentSection = firstSectionObj.parentSection;
-    //use finalSection
+
   }
   createFourthPageElements() {
     this.finalSection = document.createElement("section");
@@ -431,7 +405,6 @@ class FinalSection {
     this.createFourthPageElements();
     this.structureLastSection();
     this.setAttribute();
-    console.log("generateContent");
     homeRestartGameBtn();
   }
 }
@@ -439,9 +412,7 @@ class FinalSection {
 let finalSectionObj = new FinalSection();
 
 function homeRestartGameBtn() {
-  console.log("homeRestartGameBtn");
   firstSectionObj.home.addEventListener("click", function () {
-    console.log("homeRestartGameBtn");
     parentSection.removeChild(
       parentSection.lastChild
     );
@@ -449,13 +420,6 @@ function homeRestartGameBtn() {
     firstSectionObj.generateFirstSectionPageContent();
   });
 }
-
-/* function thirdSectionListeners() {
-  secondSectionObject.startSecondGameBtn.addEventListener(
-    "click",
-    thirdSectionObject.generateAndAddListenersThirdPage.bind(thirdSectionObject)
-  );
-} */
 
 function startCode() {
   firstSectionObj.generateFirstSectionPageContent();
