@@ -7,7 +7,7 @@ This is my first program wich I created after 1 month of Ironhack bootcamp 😎
 I hope you will like it! 😊
 
 ### Connect with me
-[<img align="left"  width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />[linkedin]]
+[<img align="left"  width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
 
 
  <!-- <i class="fa fa-linkedin"></i>  -->
@@ -15,9 +15,15 @@ I hope you will like it! 😊
 <br />
 
 ### Tools
-<i class="fab fa-html5"></i>
-<i class="fab fa-css3-alt"></i>
-<i class="fab fa-js-square"></i>
+[<i class="fab fa-html5"></i>]
+[<i class="fab fa-css3-alt"></i>]
+[<i class="fab fa-js-square"></i>]
+
+[<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>]
+[<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>]
+[<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>]
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 Recent Github Activity:
 
