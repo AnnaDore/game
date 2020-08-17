@@ -150,6 +150,8 @@ class SecondSection {
     //next quiz button
     this.nextBtn.setAttribute("class", "btn next");
     this.nextBtn.innerHTML = "NEXT";
+    //pretty button try
+    this.nextBtn.classList.add('disabled')
     //add a button to open the next game
     this.startSecondGameBtn.setAttribute("href", "#second-game-section");
     this.startSecondGameBtn.setAttribute("id", "start-second-game");
@@ -205,12 +207,16 @@ class SecondSection {
             secondSectionObject.question;
           secondSectionObject.congrats.innerHTML = "Correct!!!";
           secondSectionObject.nextBtn.disabled = false;
+          //pretty buttons try
+          secondSectionObject.nextBtn.classList.remove('disabled')
         } else {
           //show correct answer
           secondSectionObject.questionHolder.innerHTML =
             secondSectionObject.question;
           secondSectionObject.congrats.innerHTML = `sorry, but a correct answer is ${secondSectionObject.correctness}`;
           secondSectionObject.nextBtn.disabled = false;
+           //pretty buttons try
+           secondSectionObject.nextBtn.classList.remove('disabled')
         }
         //work with the next button
         secondSectionObject.answerOneHolder.disabled = true;
@@ -218,6 +224,12 @@ class SecondSection {
         secondSectionObject.answerThreeHolder.disabled = true;
         secondSectionObject.answerFourHolder.disabled = true;
         secondSectionObject.nextBtn.disabled = false;
+         //pretty buttons try
+        secondSectionObject.answerOneHolder.classList.add('disabled')
+        secondSectionObject.answerTwoHolder.classList.add('disabled')
+        secondSectionObject.answerThreeHolder.classList.add('disabled')
+        secondSectionObject.answerFourHolder.classList.add('disabled')
+        secondSectionObject.nextBtn.classList.remove('disabled')
       });
     });
     secondSectionObject.nextBtn.addEventListener("click", function () {
@@ -257,6 +269,14 @@ class SecondSection {
     this.answerThreeHolder.disabled = false;
     this.answerFourHolder.disabled = false;
     this.nextBtn.disabled = true;
+    //pretty buttons try
+    this.answerOneHolder.classList.remove('disabled')
+    this.answerTwoHolder.classList.remove('disabled')
+    this.answerThreeHolder.classList.remove('disabled')
+    this.answerFourHolder.classList.remove('disabled')
+    this.nextBtn.classList.add('disabled')
+
+
     this.scoreElement.innerHTML = this.score;
   }
   correctAnswer() {
