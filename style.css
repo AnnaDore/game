@@ -223,7 +223,7 @@ footer {
 //in video <a href='#>Button</a>
  *//* make the start button beautiful!!  */
 .start-btn {
-    position: relative;
+    /* position: relative;
     align-items: center;
     width: 160px;
     height: 60px;
@@ -231,80 +231,47 @@ footer {
     transition: 0.5s;
     z-index: 1;
     cursor: pointer;
-   /*  pretty button */
+   /*  pretty button 
    text-transform: uppercase;
     font-size: 1.5em;
     letter-spacing: 4px;
-    -webkit-box-reflect: below 1px linear-gradient (transparent, #0004);
-
-    
+    -webkit-box-reflect: below 1px linear-gradient (transparent, #0004); */
+/*     new button view */ 
+background:#F4D0F9;
+color:#fff;
+border:none;
+position:relative;
+height:80px;
+font-size:1.6em;
+padding:0 2em;
+cursor:pointer;
+transition:800ms ease all;
+outline:none;
 }
-
-/* if you have time - finish pretty button https://www.youtube.com/watch?v=NWFsAMnpDXw&list=WL&index=15&t=0s */
-/* .start-btn::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(45deg,#fb0094, #00f, #EEE65E, #5EEE72, #E612EF  ); 
-   background-size: 400%;
-    opacity: 0;
-  transition: 0.5s;
-
-
-} 
-
-.start-btn::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg,#fb0094, #00f, #EEE65E, #5EEE72, #E612EF  ); 
-   background-size: 400%;
-   opacity: 0;
-   filter: blur(20px);
-   transition: 0.5s;
-   
-   
-
-} 
-
-
-.start-btn:hover span {
-   color: white;
-   
-    
-   
-   
+.start-btn:hover{
+    background:#fff;
+    color:#29161B;
+  }
+  .start-btn:before,button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #F4D0F9;
+    transition:400ms ease all;
+  }
+  .start-btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .start-btn:hover:before,.start-btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
 }
-.start-btn span::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: #F4E7F4; 
-   
-}
-.start-btn span {
-    position: absolute;
-    display: block;
-    top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
-    text-align: center;
-    background: black;
-    color: grey;
-    transition: 0.5s;
-    z-index: 1;
-} */
-
 
 /* quiz section */
 .banner-quiz {
@@ -415,7 +382,52 @@ footer {
    font-size: 1.1em;
    cursor: pointer;
     
+} 
+
+/* .btn-answer {
+
+width: 200px;
+padding: 15px 10;
+margin-right: 10px;
+background:#D02E58;
+color:#fff;
+border:none;
+position:relative;
+height:60px;
+font-size:1.6em;
+padding:0 2em;
+cursor:pointer;
+transition:800ms ease all;
+outline:none;
 }
+.btn-answer:hover{
+    background:#fff;
+    color:#D02E58;
+  }
+  .btn-answer:before,.btn-answer:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #F4D0F9;
+    transition:400ms ease all;
+  }
+  .btn-answer:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btn-answer:hover:before,.btn-answer:hover:after{
+    width:100%;
+    transition:800ms ease all;
+} */
+
+
+
+
 
 #congratulation {
     text-align: center; 
@@ -429,24 +441,183 @@ footer {
     padding: 10px;
     position: relative;
     left: 38%;
+} 
+
+/* .next {
+
+width: 150px;
+padding: 10px;
+margin-right: 10px;
+background:#D02E58;
+color:#fff;
+border:none;
+position:relative;
+height:60px;
+font-size:1.6em;
+padding:0 2em;
+cursor:pointer;
+transition:800ms ease all;
+outline:none;
+left: 38%;
 }
-#start-second-game {
+.next:hover{
+    background:#fff;
+    color:#D02E58;
+  }
+  .next:before,.next:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #F4D0F9;
+    transition:400ms ease all;
+  }
+  .next:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .next:hover:before,.next:hover:after{
+    width:100%;
+    transition:800ms ease all;
+} */
+
+
+
+
+/* #start-second-game {
+
+
+
     width: 200px;
     padding: 20px 0;
     font-size: 1.2em;
     margin-top: 30px;
     cursor: pointer;
-}
+} */
+
+#start-second-game {
+    height:60px;
+    padding:0 2em;
+    background:#D02E58;
+    color:#fff;
+    border:none;
+    position:relative;
+    font-size:1.6em;
+    
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+
+    }
+    #start-second-game:hover{
+        background:#fff;
+        color:#D02E58;
+      }
+      #start-second-game:before,#start-second-game:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        width:0;
+        background: #F4D0F9;
+        transition:400ms ease all;
+      }
+      #start-second-game:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+      }
+      #start-second-game:hover:before,#start-second-game:hover:after{
+        width:100%;
+        transition:800ms ease all;
+    } 
+
 /* 3rd section  */
-.catch {
-     position: relative;
+/* .catch {
+    position: relative;
     top: 50%;
     left: 40%;  
     width: 300px;
     padding: 20px 0;
     font-size: large;
     cursor: pointer;
+} */
+
+/* .wrapper-game {
+    position: relative;
+    top: 50%;
+    left: 40%;  
+    width: 300px;
+    padding: 20px 0;
+    font-size: large;
+    cursor: pointer;
+} */
+
+
+
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
 }
+
+.wrapper-game {
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.catch {
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  color: blue;
+  border: 2px solid blue;
+  font-size: 24px;
+  display: inline-block;
+  border-radius: 0.3em;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+
+}
+
+  .catch:before {
+    content: "";
+    background-color: rgba(255,255,255,0.5);
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -4.5em;
+    transform: skewX(-45deg) translateX(0);
+    transition: none;
+  }
+
+  .catch:hover {
+    background-color: blue;
+    color: #fff;
+    border-bottom: 4px solid darken($color, 10%);
+
+  }
+  .catch:before {
+    transform: skewX(-45deg) translateX(13.5em);
+   transition: all 0.5s ease-in-out;
+  }
+
+
+
 #second-game-content {
 /*     position: relative; */
     top: 15%; 
@@ -456,18 +627,18 @@ footer {
 
 .first{
     position: relative; 
-    left: 20%;
-    top: 30%
+   /*  left: 20%; */
+    top: 40%
 }
 .second{
     position: relative; 
-    left: 20%;
-    bottom: 40%;
+   /*  left: 20%; */
+    top: 60%
 }
 .third{
     position: relative; 
-    left: 60%;
-    bottom: 60px;
+    /* left: 20%; */
+    top: 80%
 }
 /* congrats section */
 .animation {

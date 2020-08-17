@@ -308,11 +308,19 @@ class ThirdSection {
     this.thirdSectionScore = document.createElement("div");
     //text and score
     this.thirdScore = document.createElement("div");
+    //add the catch wraper
+    this.wrapperGame = document.createElement('div')
   }
   structureThirdSection() {
     parentSection.appendChild(this.thirdSection);
     this.thirdSection.appendChild(this.thirdSectionBanner);
-    this.thirdSectionBanner.appendChild(this.catchBtn);
+    //add the catch wraper
+    this.thirdSectionBanner.appendChild(this.wrapperGame);
+    this.wrapperGame.appendChild(this.catchBtn);
+
+
+   // this.thirdSectionBanner.appendChild(this.catchBtn);
+
     this.thirdSection.appendChild(this.thirdSectionContent);
     this.thirdSectionContent.appendChild(this.info);
     this.info.appendChild(this.infoP);
@@ -323,6 +331,9 @@ class ThirdSection {
     this.thirdSection.setAttribute("id", "second-game-section");
     this.thirdSection.setAttribute("class", "second-game");
     this.thirdSectionBanner.setAttribute("class", "banner-second-game");
+    //add the catch wraper
+    this.wrapperGame.setAttribute('class', 'wrapper-game')
+
     this.catchBtn.setAttribute("class", "catch");
     this.catchBtn.innerHTML = "CATCH ME!";
     this.infoP.innerHTML = "So... Next challenge is - try to catch the button!";
@@ -350,19 +361,19 @@ let thirdSectionObject = new ThirdSection();
 
 function addListenerCatchBtn() {
   thirdSectionObject.catchBtn.addEventListener("click", function () {
-    thirdSectionObject.catchBtn.classList.add("first");
+    thirdSectionObject.wrapperGame.classList.add("first");
     thirdSectionObject.catchBtn.addEventListener("click", function () {
-      thirdSectionObject.catchBtn.classList.remove("first");
-      thirdSectionObject.catchBtn.classList.add("second");
+      thirdSectionObject.wrapperGame.classList.remove("first");
+      thirdSectionObject.wrapperGame.classList.add("second");
       thirdSectionObject.catchBtn.addEventListener("click", function () {
-        thirdSectionObject.catchBtn.classList.remove("second");
-        thirdSectionObject.catchBtn.classList.add("third");
+        thirdSectionObject.wrapperGame.classList.remove("second");
+        thirdSectionObject.wrapperGame.classList.add("third");
         thirdSectionObject.catchBtn.addEventListener("click", function () {
           thirdSectionObject.info.innerHTML =
             "It was a small joke 😀 Here are 10 points for you!";
           secondSectionObject.score += 10;
           thirdSectionObject.thirdScore.innerHTML = `YOUR SCORE IS: ${secondSectionObject.finalScore}`;
-          thirdSectionObject.catchBtn.classList.toggle("third");
+          thirdSectionObject.wrapperGame.classList.toggle("third");
           thirdSectionObject.catchBtn.innerHTML = "Let's check the results!";
           thirdSectionObject.catchBtn.addEventListener("click", function () {
             thirdSectionObject.removeThirdPageAddFourthPage();
@@ -372,6 +383,7 @@ function addListenerCatchBtn() {
     });
   });
 }
+
 
 class FinalSection {
   constructor() {
