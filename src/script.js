@@ -92,14 +92,16 @@ function addEventListenersFirstSection() {
 }
 
 class SecondSection {
-  constructor(questions, question, answers, correctness) {
+  constructor(questions, question, answers, correctness, image) {
     this.questions = questions;
     this.question = question;
     this.answers = answers;
     this.correctness = correctness;
+    this.image = image;
     this.score = 0;
     this.finalScore = 0;
     this.index = 0;
+    
   }
   createSecondPageElements() {
     //generate a content of the 2nd page
@@ -129,6 +131,10 @@ class SecondSection {
     this.nextBtn.disabled = true;
     //add next game opening button
     this.startSecondGameBtn = document.createElement("button");
+    //add image in quiz
+    this.imageWrapper = document.createElement('div')
+    this.imageHolder = document.createElement('img')
+    
   }
   setAttributesElements() {
     this.secondSection.setAttribute("class", "quiz");
@@ -156,6 +162,8 @@ class SecondSection {
     this.startSecondGameBtn.setAttribute("href", "#second-game-section");
     this.startSecondGameBtn.setAttribute("id", "start-second-game");
     this.startSecondGameBtn.innerHTML = "hey, what is next?";
+     //add image in quiz
+   //  this.imageHolder.setAttribute('src', this.image)
   }
   structureSecondSection() {
     //add a new page
@@ -182,6 +190,10 @@ class SecondSection {
     this.allButtons.appendChild(this.congrats);
     //next quiz btn
     this.allButtons.appendChild(this.nextBtn);
+     //add image in quiz
+/*      this.secondSection.appendChild(this.imageWrapper)
+     this.imageWrapper.appendChild(this.imageHolder) */
+     
   }
   generateSecondSectionPageContent() {
     firstSectionObj.removeFirstSectionCreateSecondSection();
@@ -202,11 +214,14 @@ class SecondSection {
           // alert("correct");
           secondSectionObject.correctAnswer();
           secondSectionObject.scoreElement.innerHTML =
-            secondSectionObject.score;
+          secondSectionObject.score;
           secondSectionObject.questionHolder.innerHTML =
-            secondSectionObject.question;
+          secondSectionObject.question;
           secondSectionObject.congrats.innerHTML = "Correct!!!";
+          //image
+          //this.imageHolder.setAttribute('src', this.questions[this.index].image)
           secondSectionObject.nextBtn.disabled = false;
+
           //pretty buttons
           secondSectionObject.nextBtn.classList.remove('disabled')
         } else {
@@ -217,6 +232,8 @@ class SecondSection {
           secondSectionObject.nextBtn.disabled = false;
            //pretty buttons
            secondSectionObject.nextBtn.classList.remove('disabled')
+           //image
+          // secondSectionObject.imageHolder.src = secondSectionObject.image;
         }
         //work with the next button
         secondSectionObject.answerOneHolder.disabled = true;
@@ -252,6 +269,7 @@ class SecondSection {
       this.answerThree = this.questions[this.index].answers[3];
       this.answerFour = this.questions[this.index].answers[4];
       this.correctness = this.questions[this.index].correct;
+      
     }
   }
   showQuestionAndAnswers() {
@@ -275,8 +293,6 @@ class SecondSection {
     this.answerThreeHolder.classList.remove('disabled')
     this.answerFourHolder.classList.remove('disabled')
     this.nextBtn.classList.add('disabled')
-
-
     this.scoreElement.innerHTML = this.score;
   }
   correctAnswer() {
@@ -310,7 +326,8 @@ let secondSectionObject = new SecondSection(
   questionsList,
   questionsList.question,
   questionsList.answers,
-  questionsList.correct
+  questionsList.correct, 
+  questionsList.image
 );
 
 class ThirdSection {

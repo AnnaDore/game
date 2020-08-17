@@ -236,6 +236,14 @@ button:after {
   display: flex;
   align-items: center;
 }
+.quiz img {
+    width: 70px;
+    position: absolute;
+  top: 30%;
+  right: 30%;
+  transform: translate(-50%, -50%);
+
+}
 #question-container {
   position: absolute;
   top: 30%;
@@ -521,7 +529,7 @@ button:after {
   text-align: center;
 }
 
-img {
+.animation img {
   position: absolute;
   bottom: 30px;
   left: 30px;

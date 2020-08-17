@@ -7,7 +7,8 @@ const questionsList = [
             3: 'Whatsup',
             4: 'FB messanger'
         },
-        correct: 'Hermes'
+        correct: 'Hermes', 
+        image: 'https://i.pinimg.com/originals/98/39/ed/9839ed459fc8384fdd17dd0e7b7194fa.jpg'
     }, 
      {
         question: "What sport is featured in the video game “FIFA”?",
@@ -17,7 +18,8 @@ const questionsList = [
             3: 'Football',
             4: 'Carting'
         },
-        correct: 'Football'
+        correct: 'Football',
+        image: '../images/ball.jpg'
     }, 
      {
         question: "What does Au stand for in the periodic table?",
@@ -27,7 +29,8 @@ const questionsList = [
             3: 'Gold',
             4: 'Aluminium'
         },
-        correct: 'Gold'
+        correct: 'Gold',
+        image: '../images/gold.jpg'
     }, 
     {
         question: "What is the capital city of Iceland?",
@@ -37,6 +40,7 @@ const questionsList = [
             3: 'Amsterdam',
             4: 'Rekyavik'
         },
-        correct: 'Rekyavik'
+        correct: 'Rekyavik',
+        image: '../images/iceland.jpg'
     },   
 ]  
