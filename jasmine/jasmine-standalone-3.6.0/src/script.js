@@ -150,7 +150,7 @@ class SecondSection {
     //next quiz button
     this.nextBtn.setAttribute("class", "btn next");
     this.nextBtn.innerHTML = "NEXT";
-    //pretty button try
+    //pretty button
     this.nextBtn.classList.add('disabled')
     //add a button to open the next game
     this.startSecondGameBtn.setAttribute("href", "#second-game-section");
@@ -207,7 +207,7 @@ class SecondSection {
             secondSectionObject.question;
           secondSectionObject.congrats.innerHTML = "Correct!!!";
           secondSectionObject.nextBtn.disabled = false;
-          //pretty buttons try
+          //pretty buttons
           secondSectionObject.nextBtn.classList.remove('disabled')
         } else {
           //show correct answer
@@ -215,7 +215,7 @@ class SecondSection {
             secondSectionObject.question;
           secondSectionObject.congrats.innerHTML = `sorry, but a correct answer is ${secondSectionObject.correctness}`;
           secondSectionObject.nextBtn.disabled = false;
-           //pretty buttons try
+           //pretty buttons
            secondSectionObject.nextBtn.classList.remove('disabled')
         }
         //work with the next button
@@ -224,7 +224,7 @@ class SecondSection {
         secondSectionObject.answerThreeHolder.disabled = true;
         secondSectionObject.answerFourHolder.disabled = true;
         secondSectionObject.nextBtn.disabled = false;
-         //pretty buttons try
+         //pretty buttons
         secondSectionObject.answerOneHolder.classList.add('disabled')
         secondSectionObject.answerTwoHolder.classList.add('disabled')
         secondSectionObject.answerThreeHolder.classList.add('disabled')
@@ -269,7 +269,7 @@ class SecondSection {
     this.answerThreeHolder.disabled = false;
     this.answerFourHolder.disabled = false;
     this.nextBtn.disabled = true;
-    //pretty buttons try
+    //pretty buttons 
     this.answerOneHolder.classList.remove('disabled')
     this.answerTwoHolder.classList.remove('disabled')
     this.answerThreeHolder.classList.remove('disabled')
