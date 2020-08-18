@@ -60,7 +60,7 @@ class FirstSection {
     //greet a user and add start button
     this.startBtn.classList.add("start-btn");
     this.startBtn.innerHTML = "START";
-    this.p.innerHTML = `Hey ${this.inputName.value}! I have a nice game for you!If you wanna play - click the Start button!`;
+    this.p.innerHTML = `Hey ${this.inputName.value}! I have a nice game for you! If you wanna play - click the Start button!`;
     this.contentHolder.appendChild(this.p);
     this.contentHolder.appendChild(this.startBtn);
   }
