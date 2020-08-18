@@ -577,9 +577,9 @@ button:after {
 } */
 
 @media screen and (max-width:960px) {
-/*  .logo {
-   display: none
- } */
+  .logo {
+   height: 80px;
+ } 
 
   .container div {
     display: none;
@@ -594,15 +594,29 @@ button:after {
     flex-direction: column;
     align-items: center;
   }
+/*   #question-container > div > div {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    font-size: 16px;
+  } */
+  #score {
+    font-size: 16px;
+  }
   .btn-answer {
     width: 100px;
     
+  }
+  #question {
+    margin-bottom: 5px;;
   }
   #answer-buttons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 10px;
   }
   #second-game-content {
     margin-top: 100px;
