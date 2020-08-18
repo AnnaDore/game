@@ -22,7 +22,7 @@ class FirstSection {
   }
   setAttributesElements() {
     //here set all attributes for the created elements
-    this.home.innerHTML = "You are in game";
+    this.home.innerHTML = "Game time";
     this.contact.setAttribute("href", "#footer-scroll");
     this.fisrtSection.setAttribute("class", "first-section");
     this.fisrtSection.setAttribute("id", "start-game-again");
