@@ -5,7 +5,7 @@ const questionsList = [
             1: 'Hermes',
             2: 'Telegram',
             3: 'Whatsup',
-            4: 'FB messanger'
+            4: 'FB messenger'
         },
         correct: 'Hermes', 
         image: 'https://i.pinimg.com/originals/98/39/ed/9839ed459fc8384fdd17dd0e7b7194fa.jpg'
