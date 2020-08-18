@@ -576,13 +576,17 @@ button:after {
   }
 } */
 
-@media screen and (max-width:767px) {
- 
+@media screen and (max-width:600px) {
+/*  .logo {
+   display: none
+ } */
+
   .container div {
-    display: block;
+    display: none;
   }
   .nav {
-    display: none;
+    display: block;
+    font-size: 13px;
   }
   #question-container {
     font-size: 12px; 
@@ -611,9 +615,30 @@ button:after {
     display: block;
     margin-right: 20px;
   }
+  .catch {
+    width:80px;
+    padding: 2px 3px;
+    font-size: 16px;
+  }
+  @keyframes myslidein {
+    0% {
+      bottom: 0;
+      left: 0;
+    }
+  
+    50% {
+      bottom: 50%;
+      left: 50%;
+    }
+
+    100% {
+      top: 0;
+      right: 0;
+    }
+  }
 }
 
-@media screen and (min-width: 767px) and (max-width: 960px) {
+@media screen and (min-width: 600px) and (max-width: 960px) {
   .container div {
     display: none;
   }
