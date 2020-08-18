@@ -588,21 +588,27 @@ button:after {
     display: block;
     font-size: 10px;
   }
+  .hello-section  {
+    margin-top: 50px;
+  }
+  .hello-section p {
+    font-size: 20px;
+  }
   #question-container {
+    margin-top: 30px;
     font-size: 12px; 
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-/*   #question-container > div > div {
-    margin-top: 100px;
+  .score-wrapper {
     display: flex;
     flex-direction: row;
-    justify-items: center;
-    font-size: 16px;
-  } */
+    justify-content: center;
+  }
   #score {
     font-size: 16px;
+    
   }
   .btn-answer {
     width: 100px;
@@ -634,19 +640,29 @@ button:after {
     padding: 2px 3px;
     font-size: 16px;
   }
+  .animation img {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    opacity: 0.8;
+    animation: myslidein 10s, myrotate 1.75s;
+    /*  animation-iteration-count: infinite;  */
+    -webkit-animation: myslidein 10s forwards;
+  }
   @keyframes myslidein {
     0% {
-      bottom: 0;
-      right: 50%;
+      top: 0;
+      right: 70%;
     }
   
     25% {
-      bottom: 25%;
+      top: 25%;
       right: 50%;
     }
   
     50% {
-      bottom: 50%;
+      top: 50%;
       right: 50%;
     }
     75% {

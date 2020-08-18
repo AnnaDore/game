@@ -142,6 +142,7 @@ class SecondSection {
     this.questionContainer.setAttribute("id", "question-container");
     this.scoreText.innerHTML = "your score is: ";
     this.scoreElement.setAttribute("id", "score");
+    this.scoreWrapper.setAttribute('class', 'score-wrapper')
     this.scoreElement.innerHTML = this.score;
     //elements for the question, answers, button
     this.questionHolder.setAttribute("id", "question");
@@ -441,7 +442,7 @@ class FinalSection {
     this.layeredImage.appendChild(this.animatedImage);
   }
   setAttribute() {
-    firstSectionObj.home.innerHTML = "Start game again";
+    firstSectionObj.home.innerHTML = "Try again";
     this.finalSection.setAttribute("class", "animation");
     this.layeredImage.setAttribute("class", "layered-image");
     this.lastBanner.setAttribute("class", "banner-finish-game");
