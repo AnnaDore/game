@@ -21,8 +21,9 @@ class FirstSection {
     this.contact = document.getElementById("contact");
   }
   setAttributesElements() {
+   // this.home.setAttribute('id', 'game-status')
     //here set all attributes for the created elements
-    this.home.innerHTML = "In game";
+    //this.home.innerHTML = "In game";
     this.contact.setAttribute("href", "#footer-scroll");
     this.fisrtSection.setAttribute("class", "first-section");
     this.fisrtSection.setAttribute("id", "start-game-again");
@@ -442,6 +443,9 @@ class FinalSection {
     this.layeredImage.appendChild(this.animatedImage);
   }
   setAttribute() {
+    
+    firstSectionObj.home.removeAttribute('id', 'game-status')
+    firstSectionObj.home.setAttribute('class', 'game-status')
     firstSectionObj.home.innerHTML = "Try again";
     this.finalSection.setAttribute("class", "animation");
     this.layeredImage.setAttribute("class", "layered-image");
@@ -467,7 +471,10 @@ function homeRestartGameBtn() {
       parentSection.lastChild
     );
     // startCode();
+    firstSectionObj.home.removeAttribute('class', 'game-status')
+    firstSectionObj.home.setAttribute('id', 'game-status')
     firstSectionObj.generateFirstSectionPageContent();
+    
   });
 }
 

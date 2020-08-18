@@ -8,6 +8,8 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
 body {
   font-family: "Vollkorn", serif;
   margin: 0;
@@ -564,6 +566,14 @@ button:after {
   }
 }
 
+#game-status {
+  display: none;
+  
+}
+.game-status {
+  display: block;
+}
+
 /* @media screen and (min-width: 600px) {
   .container div {
     display: none;
@@ -633,10 +643,7 @@ button:after {
     font-size: 30px;
     font-weight: bolder;
   }
-  #game-status {
-    display: block;
-    margin-right: 20px;
-  }
+
   .catch {
     width:80px;
     padding: 2px 3px;
