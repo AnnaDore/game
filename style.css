@@ -576,7 +576,7 @@ button:after {
   }
 } */
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:960px) {
 /*  .logo {
    display: none
  } */
@@ -638,15 +638,32 @@ button:after {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 960px) {
+/* @media screen and (min-width: 600px) and (max-width: 960px) {
   .container div {
     display: none;
   }
   .nav {
     display: block;
+    font-size: 13px;
+  }
+  @keyframes myslidein {
+    0% {
+      bottom: 0;
+      left: 0;
+    }
+  
+    50% {
+      bottom: 50%;
+      left: 50%;
+    }
+
+    100% {
+      top: 0;
+      right: 0;
+    }
   }
 
-}
+} */
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
    .container div {
